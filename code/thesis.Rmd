@@ -1,0 +1,195 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r setting_up, include=FALSE}
+getwd()
+# setwd("/Users/katherinehayes/Desktop/Thesis/Data")
+library(ggplot2)
+library(knitr)
+library(plyr) 
+knitr::opts_chunk$set(error = TRUE)
+# rmarkdown::render(input = "charcoal_concentrations.Rmd", output_format = "html_document")
+```
+
+# Introduction
+This R markdown document is how I'll be documenting my data analysis for my thesis project. I'm starting with my radiocarbon dates and soil charcoal data, and later I'll add in the costech results (C and N concentrations, and now isotopes as well). I've tried to document my thought processes as I process the data, make figures, and run analyses. Since I'm using it as a living document, I've keep in thoughts, techniques and approaches as they've changed. I've added dates where applicable to show my latest thoughts or decisions. It's written very informally, mostly as notes to myself, so I can keep track of my work. 
+
+## 5/12/18 -
+I have costech data, so I'll be revisiting this file!
+
+## Charcoal Concentration
+First and foremost, I want to test the relationship between charcoal concentration and depth (later I'll move on to working with the other variables). 
+
+### Data Description
+#### Methods
+I have 17 sites, some from similar areas, sampled from about 0-350 mm using a 5-cm split core sampler. My field crew and I took duplicate samples at each site, and used one for sieving and one for kmd analysis. The numbers here are the charcoal mass results from the sieving process: Kergis (my undergraduate assistant) has helped me treat each sample with 10% KOH before rinsing each between 2 mm and 0.5 mm test sieves. Charcoal and related materials were removed and treated with 3% hydrogen peroxide, before being oven-dried in petri dishes. The 2mm size class was large enough that charcoal was typically easily visible and picked out from the sieve. The >0.5 usually included much more organic material (and generally, just more "stuff"), so any material on the sieve was washed directly into a petri dish, and charcoal was identified under a microscope. Kergis has been removing fragements with a tweezers, placing them into a glass vial, and then weighing them on wax paper on the scale in Josh's lab. He's done with the 2 mm size class, and has a few left to count from the 0.5 mm. Generally, the 0.5 mm samples have large counts but not a lot of mass. I've told Kergis to stop counting after he hits 500 pieces (may bring that number down again, I'm not trying to scare him off science entirely), and to use "0.0001" grams for the samples too small to measure on the scale in Josh's lab. We could eventually measure those on the scale in Scott's lab that can handle mg, but I'm not sure it'll make much of a difference with numbers that low. 
+I've been updating the figures and analysis as he works. The data in this document is current as of 4/28. 
+
+Here's what all that data looks like:
+```{r char_mass, echo=TRUE}
+char_mass <- read.csv("char_mass_sieve.csv")
+char_mass
+```
+### Column names
+"Site_id" is the site name, "sample_id" is the depth category, "depth..mm." is the depth in mm (the csv file makes the parentheses weird once you load it as a data frame), "mass...2.mm." is the mass of charcoal over 2mm in diameter and "mass....0.5.mm." is the mass of charcoal between 2 and 0.5 mm in diameter. 
+
+### why thinking ahead is important
+The most important note to make here is about the "dry.weight" category: we didn't dry and weigh the sieved samples before sieving. We probably should've. Instead, we added the KOH right to the plastic bags, as some folks do in the field. That means that the dry weight data is actually from the kmd samples: there was no difference in how we took samples for the two methods, but the numbers won't align perfectly. We always took duplicate cores within 2-3 meters of one another, and brushed off most of the leaf/duff layer before sampling, so soil types themselves should be the same. We did our best to drive the core sampler to the same depth (~ 30 centimeters) for each core, but there's a chance things compressed differently within the sampler during different drives. The A and G samples especially sometimes had slightly different amounts recovered: duff and clay layers at the top and bottom may have compressed differently between samples, though we often re-did a core if we felt it was too different than its neighbor. 
+
+## Cleaning up this data
+Before I start working this file, I want to fix/change a few things:
+ - The NAs in the >2 mm mass column should all get set to zero, and perhaps the NAs in the 0.5 column as well. 
+ - I also should probably rename some of the column names, the csv format makes parentheses weird and I don't like it
+ 
+##### 5/5/18 12:45 pm 
+ - I do still think it makes sense to change the 2mm NAs to zero, since the NAs in that case mean there wasn't chacoal     at that size class, but I'm going to go back to not changing the 0.5mm NAs to zero. Kergis still has 2-3 >0.5 mm    samples to count, so leaving the NAs should reflect that those samples have to be counted still. It also should clean up the NAs I'm seeing in charcoal concentration down the road. 
+  - I'm also going to calculate total mass in R, rather than doing it in the excel file. That doesn't seem to be dynamic     enough. Changing that now. 
+
+```{r}
+# changing NAs to zero
+  char_mass$mass...2.mm.[which(is.na(char_mass$mass...2.mm.))] <- 0
+  # doing the same with the >0.5 
+  # actually nope, see note in text above # leaving the code just in case
+  # char_mass$mass....0.5.mm.[which(is.na(char_mass$mass....0.5.mm.))] <- 0
+  
+# renaming columns:
+names(char_mass)
+  # I'm also going to get rid of the . names and change them to _ 
+  # because it bugs me
+
+  # this is the function in plyr, but it doesn't really appear that it's holding true past anything but this chunk
+  # names aren't getting changed for good # including just so i know
+    # rename(char_mass, c("depth..mm." = "depth", "mass...2.mm." = "mass_2", "mass....0.5.mm." = "mass_0.5","dry.weight"       = "dry_weight"))
+          
+  # let's try the more old-fashioned way:
+    # this is how to do one at a time
+      # colnames(char_mass)[colnames(char_mass) == "mass...2.mm."] <- "mass_2" 
+    # or all at once:
+      names(char_mass) <- c("site_id", "sample_id", "depth", "dry_weight", "mass_2", "mass_0.5")
+
+# Finally, let's caculate total charcoal mass from the two size classes of charcoal counts
+  char_mass$total_mass_g <- mass_2 + mass_0.5 # i'll eventually change this into mg to get charcoal concentration, but doing it in g for now
+```
+
+## Bulk Density
+To get charcoal concentration, I need to first calculate bulk density. The equation for bulk density (BD) that I'll be using is BD (gram/cubic centimeter) = dry soil weight (grams) / soil volume (cubic centimeter). 
+The height and diameter of the soil rings we used is both 5 cm, so the volume of the ring is pi x radius squared x height. This comes out to 98.175 cubic centimeters (rounded). 
+
+###Note:
+I'll be using the dry soil weight from the KMD data, since the sieved samples were never dried out before sieving. Not ideal, since recovery wasn't identical at every site, but it's what we have. I expect it will mostly be an issue for A and G depth categories (0-50 mm and 300-350 mm respectively), those samples were the ones that differed the most. The A samples tended to be duff: the amount of that material differed at each site and with each sample to begin with, and occassionally compressed within the sampler during recovery. G samples were the samples at the very bottom of the corer: they weren't recovered within a ring, so their volume may be slighly different, and if soils were dense enough or had enough clay, it seemed like the sample would split at something like a root, leaving soil behind at the bottom of the core in the ground. 
+
+```{r bulk_density, echo=TRUE}
+names(char_mass) # note: check names(char_mass) to make sure code is carrying through to next chunk (5/5/18)
+attach(char_mass)
+
+# calculating the volume of the soil rings used
+ring_volume <- pi * 2.5^2 * 5 # 98.17477
+
+# adding column to char_mass for bulk density
+char_mass$bulk_density <- (dry_weight/ring_volume) # if this isn't working, check if you've attached char_mass again
+
+# exploring relationship between bulk density and depth
+ggplot(char_mass) + geom_boxplot(aes(char_mass$sample_id, char_mass$bulk_density), fill = "grey") + labs(x = "Depth category", y = "Bulk Density (grams per cubic centimeter)", title = "Bulk Density across depth")
+  # i like how this looks 
+```
+
+So bulk density looks like it's lowest in surface soils, and higher in the deeper samples. I would've expected the very deepest soils to be the densest, but since we didn't always recover a full sample from those depths, maybe the dry weight is underreflecting density?
+
+##### 5/5/18 - 
+After thinking about this more, I now really think this is because the G samples were not recovered within a sampler ring like the rest of them, and therefore likely have a slightly different volume. We essentially bagged whatever ended up in the soil corer underneath the bottom ring. Their radius should be the same, but the height is probably slightly less than 5 cm. I'll take a look at the sampler when I'm in the office on Monday: comparing weights to a smaller volume should raise that boxplot up to where we'd expect it to be. To indicate the uncertaintly of the height, rather then calling them the 300-350 mm sample, I'm just calling them "bottom" for now. 
+
+Some other thoughts on the graph: we see the most outliers in the middle/lower samples - I remember the weight of those samples changing a lot between site cluster due to soil type - some clusters of sites had much more clay than others. 
+
+There's also a far number of zeros: I think the zeros at A are from samples without dry weights (because of poor recovery), but I'm less sure about the outliers at zero for C, F and G. Checking that here:
+```{r}
+char_mass[which(char_mass$bulk_density == 0),]
+```
+Alright, that looks like just an issue with dry weight (AKA poor recovery). That's an issue I've run into a little further down after I caculate charcoal concentration, so I'm going to go ahead and take those values out. 
+
+```{r}
+char_mass_bd_out <- char_mass[-which(char_mass$dry_weight == 0),] # don't want to remove them permanently just yet
+
+# let's plot that again
+ggplot(char_mass_bd_out) + geom_boxplot(aes(char_mass_bd_out$sample_id, char_mass_bd_out$bulk_density), fill = "grey") + labs(x = "Depth category", y = "Bulk Density (grams per cubic centimeter)", title = "Bulk Density across depth across all sites", subtitle = "Removed samples with inaccurate dry weights")
+
+# Still a few lower values, let's check those
+char_mass_bd_out[which(char_mass_bd_out$bulk_density <0.01),]
+```
+That seemed to help - the box at A lifted up away from the x axis, and G is a bit higher as well. There's still some low values at C and F, but it doesn't look like an issue with problematic dry weight values, so I'll let it be. 
+
+#### Correcting Units
+I need to convert the total mass of charcoal into miligrams (right now it's in grams). Then I should be able to calculate charcoal concentrations in mg/g (so mg of charcoal per gram of soil).
+
+```{r converting mg, echo=TRUE}
+char_mass$total_mass_mg <- total_mass_g*1000
+
+# that means charcoal concentrations should be:
+char_mass$char_concentration <- char_mass$total_mass_mg/dry_weight
+char_mass
+```
+
+Here's what that looks like plotted:
+```{r}
+detach(char_mass) # at this point, run me until you get "Error in detach(char_mass) : invalid 'name' argument" 
+                  # attach doesn't update to include columes you've added, so you'll need to redo it for it to apply to                     things like char_concentration and bulk_density
+                  # plus, detaching a bunch gets rid of the "mask" warning
+attach(char_mass)
+boxplot(char_concentration ~ sample_id)
+```
+
+So, obviously there's some issues with outliers here. Since we're using dry weight from the kmd samples not the sieving samples, not every sample has a weight. Again, a few of the A or G samples (the very top or bottom) don't have a kmd dry weight, even though we obviously had enough sample to sieve and find charcoal. For now, I think I'll remove those samples or hide them so I can plot charcoal concentrations without weird infinite values.  
+
+##### 4/27/18 - 
+I've also emailed Kergis to check if there's an issue with the sample with 1200+ concentrations (EELS_01A). From the numbers I can see, the dry weight from the kmd samples was pretty low, and the charcoal mass from the sieved sample was pretty high. One solution might be to average the other A sample weights, and use that value instead?\
+
+##### EDIT: 5/5/18 -
+Sometime last week, I had Kergis check EELS_01A. That one was definitely a case of a weird decimal point. (0.1058 grams was supposed to be 0.0153 grams)
+
+```{r checking_outliers, echo=TRUE}
+# checking for outliers
+char_mass[which(char_concentration > 100),]
+```
+###### 5/4/18 12 pm -
+So, EELS_01A was looking weird again, but I checked the CSV and I had fixed the error in the wrong place. Should be better now. Rerunning to check. 
+
+#### 5/4/18 12:30 -
+I've fixed the error in the data file, but regardless of the typo, 15.8 mg/0.084g is still a concentration of 188.0952 mg/g. That's a pretty high concentration, so I think along with the INF values, I'll take it out for now. The surface samples tend to be on the lighter side, but given the already discussed problems of using kmd dry weight against sieved charcoal, I feel safer taking it out. We probably had greater recovery in the sieved sample from that site. I think it's an important sign however, that a surface sample could have so much charcoal. 
+  Side note to self: Attach isn't functioning as I'd like it to while I change this dataframe. It doesn't update as       columns are added or values removed, so I'm going to stop using it for now. 
+  
+```{r echo=TRUE, removing_outliers}
+char_mass <- char_mass[-which(char_concentration > 100),]
+which(char_mass$char_concentration == "Inf") # double checking that the infinte values are gone
+char_mass <- char_mass[-which(is.na(char_mass$char_concentration)),] # also getting rid of NAs
+
+# let's check the boxplot
+boxplot(char_mass$char_concentration ~ char_mass$sample_id)
+```
+That seems better - no huge outliers, and the InF value warning is gone with the Inf values. 
+
+```{r plotting_outliers, echo=TRUE}
+# let's make that look pretty
+boxplot <- ggplot(char_mass, aes(x = char_mass$sample_id, y = char_mass$char_concentration))
+boxplot  + geom_boxplot( fill = "grey", ) + labs(title = "Charcoal Concentrations across depth", x = "Depth Category", y = "Charcoal Concentration (mg/g)", subtitle = "Plotted without NAs or infinite values")
+# including the subtitle as a note to myself, will remove by final product
+```
+So, charcoal concentration does appear to vary across depth. This graph makes it look as though there's a pretty strong linear relationship: concentration of charcoal decreasing with depth. As Dan's suggested, I want to run a linear regression on this, to establish that relationship statistically. 
+
+## Linear Regression
+```{r}
+# checking correlation between bulk density and depth
+
+```
+
+
+So, let's see if I can incorporate these values with the site data:
+
+
+## Breaking down by site type
+5/1/18, post dan meeting - so, it makes sense to break down dry weight, char concentrations and bulk density by site type and compare the three. I think I can do that using code from this site: https://www.r-graph-gallery.com/265-grouped-boxplot-with-ggplot2/
+
+### Bulk density by site
+Thinking about how much I remember samples changing in consistency between site types: I should probably also plot these by site cluster, that should give a better sense of how these samples are different. 
+
+
+

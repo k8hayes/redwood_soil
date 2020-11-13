@@ -1,0 +1,132 @@
+---
+title: "Working with Site data"
+output: html_notebook
+---
+```{r}
+library(ggplot2)
+install.packages("tidyverse")
+library(tidyverse)
+```
+
+4/15 - I'm transferring my r script into a notebook for ease. I'm aiming to make this process as replicable as possible, given that more data will be added over the next few weeks
+
+This is data from Dan, calculated from a 30 m DEM file. 
+His notes: 
+- elevation in meters
+- slope in degrees
+- aspect is in degrees CCW from east.
+- pcurv is the curvature of the slope
+- these three are calculated with this command: https://grass.osgeo.org/grass64/manuals/r.slope.aspect.html
+- topidx is the “topographic index” which is supposed to be related to soil moisture (amount of uplsope area divided by slope)  see link: https://grass.osgeo.org/grass64/manuals/r.topidx.html
+- sun is the amount of solar radiation over the day, (I used September 1st) relative to a flat surface.  A value >1 means it is south-facing.  A value <1 is shaded somewhat.
+- Since so many sites are on ridges or flat areas, aspect values are not so meaningful, and the sun value is close to 1. 
+
+```{r intro}
+# setting up workspace 
+setwd(dir = "Desktop/Thesis/Data/")
+char_mass <- read.csv(file = "char_mass_sieve.csv") # mass results from sieving (still in progress 4/15)
+site_data <- read.csv(file = "char_sites.csv") # site attributes
+
+```
+
+
+I've been working on indexing the data by factors such as site and depth, and think I've settled on so far the most efficient way of doing it. Here's the indexes by depth:
+```{r indexing by depth}
+# extracting data by depth
+  a_char <- char_mass[which(char_mass$sample_id == "A"),]
+  b_char <- char_mass[which(char_mass$sample_id == "B"),]
+  c_mass <- char_mass[which(char_mass$sample_id == "C"),]
+  d_mass <- char_mass[which(char_mass$sample_id == "D"),]
+  e_mass <- char_mass[which(char_mass$sample_id == "E"),]
+  f_mass <- char_mass[which(char_mass$sample_id == "F"),]
+  g_mass <- char_mass[which(char_mass$sample_id == "G"),]
+  
+# working with those groupings
+  # site_averages <- tapply(char_mass$total.mass,char_mass$Site_id, mean)
+depth_averages <- tapply(char_mass$total.mass, char_mass$depth..mm., mean)
+depth_sum <- tapply(char_mass$total.mass, char_mass$depth..mm., sum)
+depth_sds <- tapply(char_mass$total.mass, char_mass$depth..mm., sd)
+```
+
+And the indexes by site:
+```{r}
+ridg_01_char <- char_mass[which(char_mass$Site_id == "RIDG_01"),]
+ridg_02_char <- char_mass[which(char_mass$Site_id == "RIDG_02"),]
+ridg_char <- merge(ridg_01_char, ridg_02_char, all = TRUE)
+
+eels_char <- char_mass[which(char_mass$Site_id == "EELS_01"),]
+eels_01_char <- eels_char
+
+salm_01_char <- char_mass[which(char_mass$Site_id == "SALM_01"),]
+salm_02_char <- char_mass[which(char_mass$Site_id == "SALM_02"),]
+salm_03_char <- char_mass[which(char_mass$Site_id == "SALM_03"),]
+salm_char <- merge(merge(salm_01_char, salm_02_char, all = TRUE), salm_03_char, all = TRUE)
+
+worf_01_char <- char_mass[which(char_mass$Site_id == "WORF_01"),]
+worf_02_char <- char_mass[which(char_mass$Site_id == "WORF_02"),]
+worf_03_char <- char_mass[which(char_mass$Site_id == "WORF_03"),]
+worf_04_char <- char_mass[which(char_mass$Site_id == "WORF_04"),]
+worf_05_char <- char_mass[which(char_mass$Site_id == "WORF_05"),]
+worf_char <- merge(merge(worf_01_char, worf_02_char, all = TRUE), merge(merge(worf_03_char, worf_04_char, all = TRUE), worf_05_char, all = TRUE), all = TRUE)
+
+wolf_01_char <- char_mass[which(char_mass$Site_id == "WOLF_01"),]
+wolf_02_char <- char_mass[which(char_mass$Site_id == "WOLF_02"),]
+wolf_03_char <- char_mass[which(char_mass$Site_id == "WOLF_03"),]
+wolf_04_char <- char_mass[which(char_mass$Site_id == "WOLF_04"),]
+wolf_char <- merge(merge(wolf_01_char, wolf_02_char, all = TRUE), merge(wolf_03_char, wolf_04_char, all = TRUE), all = TRUE)
+
+gog_01_char <- char_mass[which(char_mass$Site_id == "GOG_01"),]
+gog_02_char <- char_mass[which(char_mass$Site_id == "GOG_02"),]
+gog_char <- merge(gog_01_char, gog_02_char , all = TRUE)
+
+# 
+site_averages <- tapply(char_mass$total.mass,char_mass$Site_id, mean)
+site_sums <- tapply(char_mass$total.mass, char_mass$Site_id, sum)
+site_sds <- tapply(char_mass$total.mass, char_mass$Site_id, sd)
+site_char <- data.frame(site_averages, site_sums, site_sds)
+```
+
+Here is the code for plotting average charcoal per depth. I did it in ggplot2, and have two versions: one with outliers, one without. These should get updated as the counts come in. 
+```{r boxplots}
+# with outliers
+boxplot_outliers <- ggplot(char_mass, aes(char_mass$sample_id, total.mass))
+boxplot_outliers + geom_boxplot(aes(group = cut_width(char_mass$sample_id, 1)), fill = "grey") + labs(title = "Average mass of charcoal per depth (sieving)", x = "Sample depth category", y = "Total mass of charoal (mg)") + ylim(-100,1000 )
+
+# without outliers #solution found on stackoverflow
+# create boxplot that includes outliers
+  p0 = ggplot(char_mass, aes(y = char_mass$total.mass), title = "Average mass of charcoal per depth") + geom_boxplot(aes(x = char_mass$sample_id), varwidth = TRUE)
+  # compute lower and upper whiskers
+  sts = boxplot.stats(char_mass$total.mass)$stats
+  # scale y limits based on ylim1
+  boxplot = p0 + coord_cartesian(ylim = c(sts[2]/2,max(sts)*1.05))
+boxplot + labs(title = "Average mass of charcoal per depth (sieving)", subtitle = "Plotted without outliers", x = "Sample depth category", y = "Total mass of charoal (g)") + ylim(-100, 300) # no outliers
+
+```
+
+5/1/18 - I'm revisting the previous two boxplots, in order to plot against depth not sample_id. I didn't do that before since plotting by depth seemed to mix up the order, but I think I've figured out how to work with it. 
+```{r}
+# with outliers
+boxplot_outliers <- ggplot(char_mass, aes(char_mass$depth..mm., total.mass))
+boxplot_outliers + geom_boxplot(aes(group = cut_width(char_mass$depth..mm., 1)), fill = "grey") + labs(title = "Average mass of charcoal per depth (sieving)", x = "Sample depth category", y = "Total mass of charoal (mg)") + ylim(-100,1000 )
+
+char_mass %>%
+    mutate(depth..mm. = fct_relevel(depth..mm., "0-50", "50-100", "100-150", "150-200", "200-250", "250-300", "bottom")) %>%  ggplot(aes(x = char_mass$depth..mm., y = char_mass$total.mass)) + geom_boxplot()
+```
+
+
+Now, I need to extract the specific bulk sample sites from the site data in order to compare charcoal mass to those data. Hoping that the data.table package will help (per an answer on this stackoverflow question: https://stackoverflow.com/questions/21716760/extract-rows-from-r-data-frame-based-on-factors-strings)
+```{r extracting bulk sample sites}
+install.packages("data.table")
+library(data.table)
+
+# well, actually, given that all the bulk sites were done in 2017, I can just index by year and not by each site specifically
+bulk_site_data <- site_data[site_data$year ==  "2017",]
+```
+
+So, now I should have data comparable between the charcoal data and the site attributes:
+```{r plotting char against site attributes}
+plot(bulk_site_data$elevation, site_char$site_sums)
+plot(bulk_site_data$slope, site_char$site_sums)
+plot(bulk_site_data$pcurv, site_char$site_sums)
+```
+

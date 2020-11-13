@@ -1,0 +1,180 @@
+---
+title: "Costech"
+output: html_notebook
+---
+# Working with elemental analysis data
+### 5/8/18 - 
+I recieved the results from Tray 1 today from Leo Sternberg, so I'll be able to begin working with this set of data. I'll have a lot of directions to go with this, so I'm going to start by getting charcoal concentration by comparing kmd C to kmd weight. Then I'll be able to compare C concentration estimates between the kmd method and the sieving method. Tray 1 is just a few sites, but it'll be enough to get started. 
+
+It looks like Leo's calculated mass of C in the mg_Carbon column: the excel file uses the formula c%/sample weight*100). I think I'll add a column called "type" that's just raw, kmd, and std. That'll make it easier to plot according to type. I'm also going to add "site", with just the four letter code for each site, and "site_type", the four letter code plus the number. I'm doing all in excel for time's sake. 
+
+### 5/12/18 - entering last tray of data
+
+```{r}
+library(ggplot2)
+library(cowplot)
+
+setwd("Desktop/Thesis/Data/costech/")
+costech_results <- read.csv("costech_results.csv")
+costech_results
+
+names(costech_results)
+colnames(costech_results) <- c("site", "site_name", "sample_id", "depth_category", "kmd_starting_weight", "digest_weight", "tin_weight", "costech_sample_weight", "tray_place", "C_percent", "N_percent", "Del_C", "Del_N","mg.carbon.wrong", "tray_number", "type", "site_type")
+```
+
+Creating a file with just the sites, no standards. 
+```{r}
+sites <- costech_results[-which(costech_results$type == "std"),]
+sites <- sites[-which(sites$type == "kmd std"),]
+sites <- sites[-which(sites$type == "dup"),]
+sites <- sites[-which(sites$type == "raw  char st"),]
+  # also need to ignore NAs for now # EDIT 5/12/18 - no need anymore, all trays are in
+  # sites <- sites[-which(is.na(sites$C_percent)),]
+sites
+```
+5/9/18 - So, that should just be tray 1 and 2.
+5/10/18 - Now has tray 3.
+5/12/18 - Tray 4 entered! Still need to sort the reversed N%/isotope values in tray 2, but I have all the C info to work on these visuals.
+
+## Converting from C mass to C concentration
+
+Right now, mg.carbon is the mass of charcoal for each sample. To obtain a comparable metric, I need to convert the kmd mg.carbon into charcoal concentration. The equation Dan gave me in an email is the following: 
+
+(% C of digested sample *  weight of digested sample on filter paper) / mass of soil sample used in digestion 
+= g PyC / g of soil * 1000 / 100 = mg PyC / g of soil
+
+```{r}
+# Calculating for kmd sites
+kmd_samples <- sites[which(sites$type == "kmd"),]
+kmd_samples$PyC_mg <- (((kmd_samples$C_percent*kmd_samples$digest_weight)/kmd_samples$kmd_starting_weight)*1000)/100
+
+# putting values back into original data frame
+mgC_g <- matrix(data = NA, nrow = length(sites$site), ncol = 1)
+sites$mgC_g <- mgC_g
+sites[which(sites$type == "kmd"),]$mgC_g <- kmd_samples$PyC_mg # yes!!
+rm(mgC_g)
+```
+
+I also need to rework the undigested samples, but that should be more straightforward. According to Dan, multiplying %_C of the raw samples by 10 will give mg C/g of soil. 
+
+```{r}
+# calculating raw soil mgC/g
+raw_samples <- sites[which(sites$type == "raw"),]
+raw_samples$mgC_g <- raw_samples$C_percent*10
+
+# putting values into data frame
+sites[which(sites$type == "raw"),]$mgC_g <- raw_samples$mgC_g
+```
+
+First plot of all data according to site:
+```{r}
+# site_ggplot <- ggplot(sites, aes(x = sites$site_id, y = sites$mgC_g, fill = sites$type)) + 
+  geom_boxplot() + 
+  facet_wrap(~sites$site_id, scales = "free_x") +
+  background_grid() + panel_border() +
+  scale_fill_manual(name = "Site Type",
+                    values = ,
+                    labels = c("kmd", "raw")) +
+  labs(x = "", y = "C levels (mg)", title = "C across sites") +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
+# site_ggplot
+# save_plot("sites.png", site_ggplot, base_aspect_ratio = 1.8)
+
+# what about:
+ggplot(sites, aes(x = sites$depth_category, y = sites$mgC_g, fill = sites$site)) +
+  geom_boxplot() + facet_wrap(~sites$type) +
+  background_grid() + panel_border()
+# i should add in site_type to this
+
+# all three site types
+ggplot(sites, aes(x = sites$depth_category, y = sites$mgC_g, fill = sites$type)) + 
+  geom_boxplot() + facet_wrap(~sites$site_type) +
+  background_grid() + panel_border()
+
+
+# let's just do hillslope and ridgetop:
+h_r_ms <- sites[-which(sites$site_type == "valley mineral soil"),]
+ggplot(h_r_ms, aes(x = h_r_ms$depth_category, y = h_r_ms$mgC_g, fill = h_r_ms$type)) +
+  geom_boxplot()  + facet_wrap(~h_r_ms$site_type, scales = "fixed") +
+  background_grid() + panel_border() + 
+  scale_x_discrete(labels = c("0-5", "5-10", "10-15", "15-20", "20-25", "25-30", "30-35")) +
+  labs(x = "Depth (cm)", y = "Milligrams of Carbon per gram of soil") + 
+   scale_fill_discrete(name = "",
+                      labels =  c("Pyrogenic Carbon", "Total Soil carbon"))
+
+```
+
+There should only be one value for each depth category at each site, so I won't be able to do boxplots for each. To get boxplots at each depth I'll have to do this:
+```{r}
+depth_ggplot <- ggplot(sites, aes(x = sites$depth_category, y = sites$mgC_g, fill = sites$type)) +
+  geom_boxplot() + background_grid() + panel_border() +
+  labs(x = "Depth (cm)", y = "mg of C / g of soil", title = "Difference in C across depth") +
+  scale_fill_discrete(name = "",
+                      labels =  c("Pyrogenic Carbon", "Total Soil carbon")) +
+  scale_x_discrete(labels = c("0-5", "5-10", "10-15", "15-20", "20-25", "25-30", "30-35"))
+depth_ggplot
+save_plot("depth.png", depth_ggplot, base_aspect_ratio = 1.8)
+
+# just the total carbon
+total_c_ggplot <- ggplot(raw_samples, aes(x = raw_samples$depth_category, y = raw_samples$mgC_g)) +
+  geom_boxplot(fill = "#1c9099") + background_grid() + panel_border() +
+  labs(x = "Depth (cm)", y = "Milligrams of C per g of soil", title = "Difference in total C across depth") + scale_x_discrete(labels = c("0-5", "5-10", "10-15", "15-20", "20-25", "25-30", "30-35"))
+total_c_ggplot
+save_plot("total_c_ggplot.png", total_c_ggplot, base_aspect_ratio = 1.25)
+```
+
+# Calculating standards
+#### Notes from 5/9/18 meeting with Dan:
+- I won't really be doing anything with the costech standards themselves: assuming the true value is 1.1 or close, I'll report it as "machine accuracy". To get to that number, I need to calculate the absolute difference of each from the true value, and then average those differences. That should give me a +/- % - "the numbers were ... with a machine accuracy of +/- ... %"
+
+- I''ll report soil replicability seperately: we'll do that with "paired differences" (we can't do standard deviations because we don't know the true values). To get a "replicability %", I need to take the absolute difference between each duplicate, and then divide by the average. In theory, I should be able to distinguish between analytical variability of the costech, and analytical variability of the kmd, but Dan says I should lump them all together. 
+```{r}
+# analyzing costech standards
+  # extracting quality control standards
+    costech_std <- costech_results[which(costech_results$type == "std"),]
+    qc_standards <- costech_std[which(costech_std$costech_sample_weight >= 8),]
+    qc_standards
+  # calculating absolute difference
+
+```
+
+
+# Ratios of PyC/total C
+### 5/10/18 email from Dan:
+"I would also calculate for each sample the PyC/total C ratio and make similar box plots. How would you expect this to change with depth (if PyC does not decay much?).Hard to tell from the figure if that ratio is changing." -DG
+
+Doing this in excel
+```{r}
+ratios <- read.csv("ratios.csv")
+names(ratios)
+ratios$percent <- ratios$ratio.of.pyc_total*100
+# getting rid of zeros # 5/12 - shouldn't have to do this now
+# ratios <- ratios[-which(ratios$ratio.of.pyc_total == 0),]
+
+
+ratio_pyc_mean <- tapply(ratios$ratio.of.pyc_total, ratios$depth_category, mean)
+mean(ratio_pyc_mean)
+ratio_ggplot <- ggplot(ratios, aes(x = ratios$depth_category, y = ratios$ratio.of.pyc_total)) +
+  geom_boxplot(fill = "#d95f0e") +
+  background_grid() + panel_border() +
+  labs(x = "Depth (cm)", y = "Ratio", title = "Ratio of Pyrogenic C to Total C") + 
+  scale_x_discrete(labels = c("0-5", "5-10", "10-15", "15-20", "20-25", "25-30", "30-35"))
+ratio_ggplot
+save_plot("ratio_ggplot.png", ratio_ggplot,base_aspect_ratio = 1.25) 
+
+percent_ggplot <- ggplot(ratios, aes(x = ratios$depth_category, y = ratios$percent)) +
+  geom_boxplot( fill = "#d95f0e") +
+  background_grid() + panel_border() +
+  labs(x = "Depth (cm)", y = "Percent", title = "Percent Pyrogenic charcoal") + 
+  scale_x_discrete(labels = c("0-5", "5-10", "10-15", "15-20", "20-25", "25-30", "30-35"))
+save_plot("percent_ggplot.png", percent_ggplot, base_aspect_ratio = 1.25)
+```
+
+By site attributes:
+```{r}
+costech_boxplot <-plot_grid(total_c_ggplot,ratio_ggplot, labels = c("A.", "B."), rel_widths = c(5, 5), rel_heights = c(0.8, 0.8))
+costech_boxplot
+save_plot("costech_boxplot.png", costech_boxplot, base_height = 4, base_aspect_ratio = 3)
+```
+
+

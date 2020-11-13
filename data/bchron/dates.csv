@@ -1,0 +1,43 @@
+﻿site_type,site,site_id,sample_id,depth,median_cal_age,error
+ridgetop mineral soil,WOMT,WOMT_01,WOMT-01d5,5,520,30
+ridgetop mineral soil,WOMT,WOMT_01,WOMT-01d19,19,645,40
+ridgetop mineral soil,WOMT,WOMT_02,WOMT-02d2,2,603,30
+ridgetop mineral soil,WOMT,WOMT_02,WOMT-02d15,15,429,30
+ridgetop mineral soil,SALM,SALM_01,SALM-01d0,0,429,30
+ridgetop mineral soil,SALM,SALM_01,SALM-01d13,13,176,40
+ridgetop mineral soil,SALM,SALM_03,SALM-03d3,3,747,30
+ridgetop mineral soil,SALM,SALM_03,SALM-03d22,22,108,30
+ridgetop mineral soil,GOG,GOG_02,GOG-02d4,4,108,30
+ridgetop mineral soil,GOG,GOG_02,GOG-02d16,16,169,35
+ridgetop mineral soil,GOG,GOG_01,GOG-01d18,18,507,30
+ridgetop mineral soil,GOG,GOG_01,GOG-01d1,1,,
+ridgetop mineral soil,SCT,SCT_01,SCT-01d16,16,652,30
+ridgetop mineral soil,SCT,SCT_01,SCT-01d20,20,1214,30
+ridgetop mineral soil,WORM,WORM_01,WORM-01d11,11,2315,35
+alluvial fan,WORM,WORM_03,WORM-03d12,12,6839,30
+alluvial fan,WORM,WORM_03,WORM-03d110,110,6666,30
+ridgetop mineral soil,RIDG,RIDG_01,RIDG-01d19,19,737,30
+ridgetop mineral soil,RIDG,RIDG_02,RIDG-02d2,2,781,30
+ridgetop mineral soil,RIDG,RIDG_02,RIDG-02d11,11,2232,35
+valley mineral soil,EELS,EELS_01,EELS-01d6,6,388,30
+valley mineral soil,EELS,EELS_01,EELS-01d13,13,103,30
+hillslope mineral soil,WOLF,WOLF_01,WOLF-01d5,5,604,30
+hillslope mineral soil,WOLF,WOLF_01,WOLF-01d16,16,,
+hillslope mineral soil,WOLF,WOLF_02,WOLF-02d3,3,1324,30
+ridgetop mineral soil,WOLF,WOLF_03,WOLF-03d10,10,3924,30
+ridgetop mineral soil,WOLF,WOLF_03,WOLF-03d45,45,310,30
+ridgetop mineral soil,WOLF,WOLF_04,WOLF-04d10,10,491,30
+hillslope mineral soil,WORF,WORF_02,WORF-02d3,3,1070,30
+hillslope mineral soil,WORF,WORF_02,WORF-02d20,20,904,30
+ridgetop mineral soil,WORF,WORF_03,WORF-03d8,8,4193,30
+ridgetop mineral soil,WORF,WORF_05,WORF-05d7,7,180,30
+colluvial hollow,GOV,GOV_01,GOV-01d7,7,931,35
+colluvial hollow,GOV,GOV_01,GOV-01d23,23,957,30
+colluvial hollow,GOV,GOV_01,GOV-01d31,31,5154,60
+colluvial hollow,GOV,GOV_01,GOV-01d31b,31,4603,30
+colluvial hollow,GOV,GOV_01,GOV-01d38,38,4727,30
+colluvial hollow,GOV,GOV_01,GOV-01d50,50,4700,30
+colluvial hollow,GOV,GOV_01,GOV-01d50b,50,4621,30
+colluvial hollow,GOV,GOV_01,GOV-01d52,52,4921,35
+colluvial hollow,GOV,GOV_01,GOV-01d52b,52,4621,30
+colluvial hollow,GOV,GOV_01,GOV-01d67,67,2750,40

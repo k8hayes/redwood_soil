@@ -1,0 +1,117 @@
+---
+title: "Fire and Carbon Cycling in Old Growth Coast Redwood"
+author: "Katherine Hayes"
+date: "5/12/2018"
+output:
+  html_document:
+    theme:"Litera"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Introduction
+
+# Soil Summary Data
+
+# Radiocarbon dates
+I've already calibrated my radiocarbon dates with Calib and Oxcal, but I wanted to mess around with the Bchron package mostly to use the BchronDensity function to visualize my dates. I'm using this site: https://cran.r-project.org/web/packages/Bchron/vignettes/Bchron.html for reference.
+```{r Installing bchron}
+library(devtools)
+devtools::install_github('andrewcparnell/Bchron')
+library(Bchron)
+setwd("Thesis/Data/bchron/")
+red_c14 <- read.csv("Thesis/Data/bchron/red14_bchron.csv")
+red_c14
+```
+Before running the Bchron density function, I need to calibrate my dates within the Bchron package:
+```{r}
+red_cal <- rep("intcal13", times = length(red_c14$ages)) # creating calibration curve
+all_ages = BchronCalibrate(ages = red_c14$ages,
+                           ageSds = red_c14$SD,
+                           positions = red_c14$depth,
+                           calCurves = red_cal)
+# summary(all_ages) will give the specific numbers
+
+```
+
+
+
+The graph here has a bit of an inherent flaw: the older dates are actually from a different type of site than the younger ones, so plotting them together is misleading. Plus, it makes examining the densities within the last 2 thousand years a bit more difficult. To solve that, I'll be seperating in between mineral soil sites (valley, hillslope and ridgetop) and what I've referred to here as 'depositional' sites (a colluvial hollow and alluvial fan we sampled opportunistically).
+```{r}
+ms_dates <- red_c14[which(red_c14$type == "ms"),]
+ms_cal <- rep("intcal13", times = length(ms_dates$ages)) # creating calibration curve
+ms_cal_dates = BchronCalibrate(ages = ms_dates$ages,
+                           ageSds = ms_dates$SD,
+                           positions = ms_dates$depth,
+                           calCurves = ms_cal)
+
+plot(ms_cal_dates, withPositions=TRUE, 
+     xlab = "Age (cal years BP)",
+     ylab = "Depth (cm)") 
+```
+The Bchron package itself adds the title: here, "position" refers to depth. 
+
+```{r}
+ms_dens <- BchronDensity(ages= ms_dates$ages,
+                         ageSds = ms_dates$SD, 
+                         calCurves = ms_cal,
+                         numMix = 50, store_density = TRUE)
+
+ms_dates$y_axis <- rep(0.008, each = 28)
+
+v_ms <- ms_dates[which(ms_dates$site_type == "valley mineral soil"),]
+h_ms <- ms_dates[which(ms_dates$site_type == "hillslope mineral soil"),]
+r_ms <- ms_dates[which(ms_dates$site_type == "ridgetop mineral soil"),]
+
+pdf("ms_date_density.pdf")
+plot(ms_dens, 
+     xlab = "Age (cal year BP)",
+     main = "Mineral Soil", las = 1)
+grid(nx = NULL, ny = NULL, col = "lightgrey", lty = "solid")
+points(x = v_ms$med_Cal_age, y = v_ms$y_axis, pch = 24, col = "#56B4E9", bg = "#56B4E980")
+points(x = r_ms$med_Cal_age, y = r_ms$y_axis, pch = 22, col = "#E69F00", bg = "#E69F0080" )
+points(x = h_ms$med_Cal_age, y = h_ms$y_axis, pch = 21, col = "#202020", bg = "#20202080")
+dev.off()
+
+```
+
+
+
+
+```{r}
+dep_dates <- red_c14[which(red_c14$type == "dep"),]
+dep_cal <- rep("intcal13", times = length(dep_dates$ages)) # creating calibration curve
+dep_cal_dates = BchronCalibrate(ages = dep_dates$ages,
+                           ageSds = dep_dates$SD,
+                           positions = dep_dates$depth,
+                           calCurves = dep_cal)
+plot(dep_cal_dates, withPositions=TRUE, 
+     xlab = "Age (cal years BP)",
+     ylab = "Depth (cm)") 
+```
+
+```{r}
+dep_dens <- BchronDensity(ages= dep_dates$ages,
+                         ageSds = dep_dates$SD, 
+                         calCurves = dep_cal,
+                         numMix = 50, store_density = TRUE)
+
+dep_dates$y_axis <- rep(0.009, each = length(dep_dates$med_Cal_age))
+alluv_fan <- dep_dates[which(dep_dates$site_type == "alluvial fan"),]
+colluv_hollow <- dep_dates[which(dep_dates$site_type == "colluvial hollow"),]
+
+pdf("dep_density.pdf")
+plot(dep_dens, 
+     xlab = "Age (cal year BP)",
+     main = "Colluvial Hollow/Alluvial Fan", las = 1)
+grid(nx = NULL, ny = NULL, col = "lightgrey", lty = "solid")
+points(x = alluv_fan$med_Cal_age, y = alluv_fan$y_axis, pch = 21, col = "#D55E00", bg = "#D55E0080")
+points(x = colluv_hollow$med_Cal_age, y = colluv_hollow$y_axis, pch = 22, col = "#009E73", bg = "#009E7380")
+dev.off()
+```
+
+
+I need to import the med_Cal_ages to plot them on top of densities:

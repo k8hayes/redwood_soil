@@ -1,0 +1,46 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Comparing sieved char to kmd char
+```{r}
+getwd()
+sieved_char <- read.csv('char_mass_sieve.csv')
+costech_char <- read.csv('costech/costech_results.csv')
+```
+
+Processing both (code from other files)
+```{r}
+# charcoal concentration SIEVED CHAR
+  # fixing column names
+    names(sieved_char)
+    names(sieved_char) <- c("site_id", "depth_category", "depth", "dry_weight", "mass_2", "mass_0.5", "total_mass", "total_mass_mg", "MgC_g")
+  # changing NAs to zero
+    sieved_char$mass_2[which(is.na(sieved_char$mass_2))] <- 0
+    sieved_char$mass_0.5[which(is.na(sieved_char$mass_0.5))] <- 0
+  # calculating total mass (mg)
+    sieved_char$total_mass_mg <- (sieved_char$mass_2 + sieved_char$mass_0.5)*1000
+  # calculating concentration
+    sieved_char$char_concentration <- sieved_char$total_mass_mg/sieved_char$dry_weight
+  # changing InF to NA
+    sieved_char$char_concentration[which(sieved_char$char_concentration == "Inf")] <- 0
+    sieved_char$char_concentration[which(is.na(sieved_char$char_concentration))] <- 0
+
+# charcoal concentration KMD CHAR
+    names(costech_char)
+    colnames(costech_char) <- c("site", "site_id", "sample_id", "depth_category", "kmd_starting_weight", "digested_weight", "tin_weight", "costech_sample_weight", "tray_placement", "C_percent", "N_percent", "Del_c", "Del_N", "mg.carbon", "tray_number","type")
+    # pulling out just digested charcoal
+    kmd_char <- costech_char[which(costech_char$type == "kmd"),]
+    kmd_char$kmd_char_concentration <-
+      (((kmd_char$C_percent*kmd_char$digested_weight)/kmd_char$kmd_starting_weight)*1000)/100
+    View(kmd_char)
+# combining the two:
+char_comparison = merge(kmd_char, sieved_char, by = intersect(names(kmd_char), names(sieved_char)))
+View(char_comparison)
+```
+
+```{r}
+ggplot(char_comparison, aes(x = char_comparison$ ))
+```
+

@@ -1,0 +1,356 @@
+﻿site,site_name,Sample_id,depth_category,starting_weight,digested_weight,tin_weight,sample_weight,tray_number,C_percent,N_percent,Del_C,Del_N,mg Carbon,tray_number,type,site_type
+RIDG,RIDG_01,RIDG_01A_kmd,A,1.0206,0.1965,33.493,8.728,h1,7.2,0.3,-29.7,-16.4,0.631,1,kmd,ridgetop mineral soil
+RIDG,RIDG_01,RIDG_01B_kmd,B,0.9991,0.7089,34.098,8.125,a2,1.6,0.1,-29.8,-15.4,0.1333,1,kmd,ridgetop mineral soil
+RIDG,RIDG_01,RIDG_01C_kmd,C,1.0236,0.8444,34.557,8.286,b2,0.2,0,-24.1,3.6,0.0199,1,kmd,ridgetop mineral soil
+RIDG,RIDG_01,RIDG_01D_kmd,D,1.0009,0.8709,34.872,8.822,c2,0.4,0,-26.7,-3.2,0.0326,1,kmd,ridgetop mineral soil
+RIDG,RIDG_01,RIDG_01E_kmd,E,1.0592,0.9155,34.846,8.63,d2,0.2,0,-25.2,4.5,0.0207,1,kmd,ridgetop mineral soil
+RIDG,RIDG_01,RIDG_01F_kmd,F,1.0109,0.892,33.704,8.291,e2,0.2,0.1,-25.6,9.6,0.0199,1,kmd,ridgetop mineral soil
+RIDG,RIDG_01,RIDG_01G_kmd,G,1.0003,0.847,33.831,8.564,f2,0.2,0.1,-25.2,10.6,0.0188,1,kmd,ridgetop mineral soil
+EELS,EELS_01,EELS_01A_kmd,A,0.2461,0.0906,34.564,8.222,f3,2.1,0.1,-28.2,-5.3,0.171,1,kmd,valley mineral soil
+EELS,EELS_01,EELS_01B_kmd,B,1.0511,0.6785,34.524,8.062,g3,0.9,0.1,-27.2,1.7,0.0701,1,kmd,valley mineral soil
+EELS,EELS_01,EELS_01C_kmd,C,1.022,0.7607,30.249,8.433,h3,0.8,0.2,-26.2,5.2,0.0641,1,kmd,valley mineral soil
+EELS,EELS_01,EELS_01D_kmd,D,0.9946,0.8705,34.662,8.306,a4,0.5,0.1,-27.9,2.7,0.0424,1,kmd,valley mineral soil
+EELS,EELS_01,EELS_01E_kmd,E,0.9747,0.8114,33.784,8.919,b4,0.4,0.2,-25.3,11.7,0.0339,1,kmd,valley mineral soil
+EELS,EELS_01,EELS_01F_kmd,F,0.9496,0.7737,34.467,8.424,c4,0.3,0.1,-24.6,8.5,0.0211,1,kmd,valley mineral soil
+EELS,EELS_01,EELS_01G_kmd,G,0.9652,0.8588,33.855,8.762,d4,0.3,0.2,-23.5,10.7,0.0245,1,kmd,valley mineral soil
+SALM,SALM_01,SALM_01A_kmd,A,0.9864,0.7614,30.686,8.897,d5,0.7,0.2,-25.3,7.5,0.0649,1,kmd,ridgetop mineral soil
+SALM,SALM_01,SALM_01B_kmd,B,0.9737,0.6649,32.479,8.344,e5,1,0.2,-24.5,6.9,0.0868,1,kmd,ridgetop mineral soil
+SALM,SALM_01,SALM_01C_kmd,C,1.0161,0.7675,34.624,8.867,f5,0.7,0.1,-25.5,4.3,0.0585,1,kmd,ridgetop mineral soil
+SALM,SALM_01,SALM_01D_kmd,D,0.9997,0.8235,34.053,8.29,g5,0.5,0.2,-23.8,9.6,0.0415,1,kmd,ridgetop mineral soil
+SALM,SALM_01,SALM_01E_kmd,E,1.0483,0.8921,34.664,8.354,h5,0.4,0.1,-24.2,11.5,0.0351,1,kmd,ridgetop mineral soil
+SALM,SALM_01,SALM_01F_kmd,F,0.9792,0.8032,31.965,8.489,a6,0.5,0.2,-24.4,8.8,0.045,1,kmd,ridgetop mineral soil
+SALM,SALM_01,SALM_01G_kmd,G,0.9873,0.7682,34.077,8.883,b6,0.9,0.1,-25.9,4.1,0.0755,1,kmd,ridgetop mineral soil
+WOLF,WOLF_01,WOLF_01A_kmd,A,0.9509,0.6943,33.99,8.054,b7,1.1,0.1,-27.1,-3.3,0.087,1,kmd,hillslope mineral soil
+WOLF,WOLF_01,WOLF_01B_kmd,B,1.0224,0.859,34.5,8.136,c7,0.6,0.1,-26,10,0.048,1,kmd,hillslope mineral soil
+WOLF,WOLF_01,WOLF_01C_kmd,C,0.9974,0.8729,33.486,8.828,d7,0.2,0.1,-23.4,12.7,0.0203,1,kmd,hillslope mineral soil
+WOLF,WOLF_01,WOLF_01D_kmd,D,1.0464,0.971,34.536,8.567,e7,0.2,0.1,-22.7,14.4,0.0137,1,kmd,hillslope mineral soil
+WOLF,WOLF_01,WOLF_01E_kmd,E,1.0388,0.9612,33.788,8.666,f7,0.2,0.1,-21.7,16.7,0.0139,1,kmd,hillslope mineral soil
+WOLF,WOLF_01,WOLF_01F_kmd,F,1.0351,0.9698,33.826,8.503,g7,0.1,0.2,-22.6,16.7,0.0094,1,kmd,hillslope mineral soil
+WOLF,WOLF_01,WOLF_01G_kmd,G,1.0236,0.7542,33.886,8.265,h7,0.2,0.2,-21.3,16.3,0.0141,1,kmd,hillslope mineral soil
+GOG,GOG_01,GOG_01A_kmd,A,1.0272,0.8371,31.351,8.781,h8,0.6,0.1,-26.4,4.2,0.0527,1,kmd,ridgetop mineral soil
+GOG,GOG_01,GOG_01B_kmd,B,1.0108,0.8198,34.184,8.667,a9,0.9,0.1,-25.1,-2.8,0.0797,1,kmd,ridgetop mineral soil
+GOG,GOG_01,GOG_01C_kmd,C,1.0218,0.8477,35.304,8.34,b9,0.6,0.1,-25.6,1.9,0.0517,1,kmd,ridgetop mineral soil
+GOG,GOG_01,GOG_01D_kmd,D,0.9857,0.836,34.273,8.187,c9,0.4,0.1,-26.5,6.8,0.0336,1,kmd,ridgetop mineral soil
+GOG,GOG_01,GOG_01E_kmd,E,1.0581,0.9329,34.25,8.518,d9,0.2,0.1,-23.4,7.3,0.0196,1,kmd,ridgetop mineral soil
+GOG,GOG_01,GOG_01F_kmd,F,1.0318,0.9722,33.809,8.202,e9,0.2,0.1,-24.1,11.7,0.018,1,kmd,ridgetop mineral soil
+GOG,GOG_01,GOG_01G_kmd,G,1.0133,0.9039,33.852,8.931,f9,0.2,0.2,-26.1,12.9,0.0161,1,kmd,ridgetop mineral soil
+WORF,WORF_01,WORF_01A_kmd,A,0.9998,0.7691,33.727,8.781,f10,1.1,0.3,-26.7,12.8,0.1001,1,kmd,hillslope mineral soil
+WORF,WORF_01,WORF_01B_kmd,B,0.9452,0.6797,34.886,8.613,g10,5.2,1.6,-25.4,0.9,0.447,1,kmd,hillslope mineral soil
+WORF,WORF_01,WORF_01C_kmd,C,1.0379,0.811,34.842,8.463,h10,1,0.1,-26.7,7.1,0.0812,1,kmd,hillslope mineral soil
+RIDG,RIDG_01,RIDG_01A,A,,,34.103,9.042,a1,34.5,0.8,,-1.5,3.1202,1,raw,ridgetop mineral soil
+RIDG,RIDG_01,RIDG_01B,B,,,34.706,8.566,b1,8.9,0.3,-28.3,0.2,0.7658,1,raw,ridgetop mineral soil
+RIDG,RIDG_01,RIDG_01C,C,,,33.875,8.246,c1,3.2,0.1,-27.3,-3,0.2606,1,raw,ridgetop mineral soil
+RIDG,RIDG_01,RIDG_01D,D,,,34.684,8.289,d1,0.7,0,-27.3,-18,0.0547,1,raw,ridgetop mineral soil
+RIDG,RIDG_01,RIDG_01E,E,,,33.905,8.305,e1,1.3,0.1,-26.2,-3.8,0.1055,1,raw,ridgetop mineral soil
+RIDG,RIDG_01,RIDG_01F,F,,,34.938,8.603,f1,1.2,0,-26.4,-3,0.1024,1,raw,ridgetop mineral soil
+RIDG,RIDG_01,RIDG_01G,G,,,34.206,8.222,g1,1,0.1,-26.2,-2.9,0.0839,1,raw,ridgetop mineral soil
+EELS,EELS_01,EELS_01A,A,,,34.409,8.065,g2,22.6,0.5,-29.7,-2.1,1.8259,1,raw,valley mineral soil
+EELS,EELS_01,EELS_01B,B,,,33.523,8.653,h2,11.6,0.5,-28.4,-0.6,1.002,1,raw,valley mineral soil
+EELS,EELS_01,EELS_01C,C,,,34.241,8.261,a3,5.3,0.4,-27.2,0.4,0.4345,1,raw,valley mineral soil
+EELS,EELS_01,EELS_01D,D,,,33.989,8.367,b3,4.1,0.3,-26.7,1.3,0.3389,1,raw,valley mineral soil
+EELS,EELS_01,EELS_01E,E,,,34.629,8.955,c3,2.1,0.2,-26.2,1.5,0.1881,1,raw,valley mineral soil
+EELS,EELS_01,EELS_01F,F,,,34.681,8.203,d3,2,0.2,-26,2.1,0.1649,1,raw,valley mineral soil
+EELS,EELS_01,EELS_01G,G,,,34.635,8.409,e3,1.7,0.1,-25.5,2.3,0.1387,1,raw,valley mineral soil
+SALM,SALM_01,SALM_01A,A,,,34.978,8.012,e4,6.9,0.3,-26.6,1.5,0.5512,1,raw,ridgetop mineral soil
+SALM,SALM_01,SALM_01B,B,,,34.271,8.192,f4,11.8,0.4,-26.2,0.7,0.965,1,raw,ridgetop mineral soil
+SALM,SALM_01,SALM_01C,C,,,33.869,8.071,g4,6.7,0.4,-26,1.3,0.5375,1,raw,ridgetop mineral soil
+SALM,SALM_01,SALM_01D,D,,,34.842,8.338,h4,4.9,0.3,-25.5,2.2,0.4094,1,raw,ridgetop mineral soil
+SALM,SALM_01,SALM_01E,E,,,34.986,8.735,a5,2.6,0.2,-25.3,2.9,0.2297,1,raw,ridgetop mineral soil
+SALM,SALM_01,SALM_01F,F,,,34.655,8.715,b5,4.3,0.3,-25.4,1.8,0.3704,1,raw,ridgetop mineral soil
+SALM,SALM_01,SALM_01G,G,,,34.624,8.784,c5,6.8,0.3,-25.5,1.8,0.5973,1,raw,ridgetop mineral soil
+WOLF,WOLF_01,WOLF_01A,A,,,34.047,8.789,c6,7.8,0.3,-27.1,0.3,0.6873,1,raw,hillslope mineral soil
+WOLF,WOLF_01,WOLF_01B,B,,,33.451,8.278,d6,3.9,0.2,-26.2,1.1,0.3212,1,raw,hillslope mineral soil
+WOLF,WOLF_01,WOLF_01C,C,,,34.087,18.105,e6,1.5,0.1,-25.7,3.1,0.268,1,raw,hillslope mineral soil
+WOLF,WOLF_01,WOLF_01D,D,,,34.697,18.265,f6,0.9,0.1,-25.1,4.3,0.1589,1,raw,hillslope mineral soil
+WOLF,WOLF_01,WOLF_01E,E,,,33.989,18.561,g6,0.7,0,-25.8,3.2,0.1299,1,raw,hillslope mineral soil
+WOLF,WOLF_01,WOLF_01F,F,,,34.364,18.072,h6,0.5,0,-25.5,4.1,0.0867,1,raw,hillslope mineral soil
+WOLF,WOLF_01,WOLF_01G,G,,,34.034,18.124,a7,0.7,0,-25.8,-0.1,0.1196,1,raw,hillslope mineral soil
+GOG,GOG_01,GOG_01A,A,,,34.076,8.824,a8,6.7,0.3,-27.1,0.1,0.5921,1,raw,ridgetop mineral soil
+GOG,GOG_01,GOG_01B,B,,,34.314,8.723,b8,5.4,0.2,-26.4,1.2,0.4676,1,raw,ridgetop mineral soil
+GOG,GOG_01,GOG_01C,C,,,34.393,8.104,c8,3.4,0.2,-26.3,1.5,0.2715,1,raw,ridgetop mineral soil
+GOG,GOG_01,GOG_01D,D,,,34.385,8.768,d8,2.6,0.1,-26.1,2,0.228,1,raw,ridgetop mineral soil
+GOG,GOG_01,GOG_01E,E,,,34.261,8.369,e8,1.2,0.1,-25.5,2.8,0.1013,1,raw,ridgetop mineral soil
+GOG,GOG_01,GOG_01F,F,,,34.268,8.754,f8,1.2,0.1,-26.2,1.8,0.1077,1,raw,ridgetop mineral soil
+GOG,GOG_01,GOG_01G,G,,,34.567,3.327,g8,1.9,0.1,-25.3,-0.7,0.0635,1,raw,ridgetop mineral soil
+WORF,WORF_01,WORF_01A,A,,,34.395,8.574,g9,9.6,0.3,-28,-1.1,0.8214,1,raw,hillslope mineral soil
+WORF,WORF_01,WORF_01B,B,,,34.723,8.278,h9,5.2,0.2,-27.5,-0.8,0.4296,1,raw,hillslope mineral soil
+WORF,WORF_01,WORF_01C,C,,,33.901,8.028,a10,4.7,0.1,-26.8,0.3,0.3765,1,raw,hillslope mineral soil
+WORF,WORF_01,WORF_01D,D,,,33.922,8.079,b10,4,0.1,-27.3,-0.7,0.324,1,raw,hillslope mineral soil
+WORF,WORF_01,WORF_01E,E,,,34.636,8.323,c10,1.7,0.1,-26.8,0.3,0.1415,1,raw,hillslope mineral soil
+WORF,WORF_01,WORF_01F,F,,,34.817,8.402,d10,1.4,0.1,-25.4,1.6,0.1176,1,raw,hillslope mineral soil
+WORF,WORF_01,WORF_01G,G,,,34.723,8.881,e10,1.6,0.1,-26,0.9,0.1377,1,raw,hillslope mineral soil
+,,blank,,,,30.179,1,a11,0.3,0.1,-29.2,-55.4,0.0032,1,std,
+,,standard_1,,,,31.458,0.299,b11,2,0.5,-29.9,-22,0.006,1,std,
+,,standard_2,,,,31.467,0.522,c11,1.7,0.2,-22,-14.9,0.0088,1,std,
+,,standard_3,,,,30.582,1.276,d11,1.7,0.2,-24.8,-9.5,0.0217,1,std,
+,,standard_4,,,,32.142,2.693,e11,1.2,0.1,-21.7,-3.7,0.0312,1,std,
+,,QC_1,,,,31.962,8.361,f11,1.1,0.1,-21.8,1.9,0.0911,1,std,
+,,QC_2,,,,30.817,8.963,g11,1.1,0.1,-21.9,1.4,0.0968,1,std,
+,,QC_3,,,,30.278,8.639,h11,1.1,0.1,-21.2,1.5,0.0942,1,std,
+,,QC_04,,,,30.331,8.143,a12,1.1,0.1,-21.5,1.3,0.0904,1,std,
+,,QC_05,,,,31.265,8.282,b12,1.1,0.1,-21.7,0.8,0.0894,1,std,
+,,QC_06,,,,31.158,8.87,c12,1.1,0.1,-21.5,2.1,0.0958,1,std,
+,,QC_07,,,,30.402,8.443,d12,1.1,0.1,-21.5,2.5,0.0912,1,std,
+,,QC_08,,,,31.24,8.982,e12,1.1,0.1,-21.5,1.5,0.0961,1,std,
+,,QC_09,,,,30.296,8.65,f12,1.1,0.1,-21.8,1.5,0.0926,1,std,
+,,QC_10,,,,31.723,8.964,g12,1.1,0.1,-21.5,2.1,0.0977,1,std,
+,,QC_11,,,,30.349,8.397,h12,1.1,0.1,-21.9,2.3,0.0907,1,std,
+RIDG,RIDG_02,RIDG_02A_kmd,A,1.0492,0.6376,34.13,8.204,e4,2.84,,,,,2,kmd,ridgetop mineral soil
+RIDG,RIDG_02,RIDG_02B_kmd,B,1.0268,0.8787,33.938,8.536,f4,0.41,,,,,2,kmd,ridgetop mineral soil
+RIDG,RIDG_02,RIDG_02C_kmd,C,1.0297,0.7821,33.928,8.109,g4,0.57,,,,,2,kmd,ridgetop mineral soil
+RIDG,RIDG_02,RIDG_02D_kmd,D,0.9628,0.8368,34.765,8.732,h4,0.3,,,,,2,kmd,ridgetop mineral soil
+RIDG,RIDG_02,RIDG_02E_kmd,E,1.0028,0.8452,34.577,8.694,a5,0.31,,,,,2,kmd,ridgetop mineral soil
+RIDG,RIDG_02,RIDG_02F_kmd,F,0.9883,0.8875,34.734,8.246,b5,0.2,,,,,2,kmd,ridgetop mineral soil
+RIDG,RIDG_02,RIDG_02G_kmd,G,0.9751,0.8112,34.089,8.582,c5,0.39,,,,,2,kmd,ridgetop mineral soil
+SALM,SALM_02,SALM_02A,A,,,34.317,8.975,a1,12.15,,,,,2,raw,hillslope mineral soil
+SALM,SALM_02,SALM_02B,B,,,34.919,8.083,b1,7.65,,,,,2,raw,hillslope mineral soil
+SALM,SALM_02,SALM_02C,C,,,34.191,8.552,c1,4.6,,,,,2,raw,hillslope mineral soil
+SALM,SALM_02,SALM_02D,D,,,34.547,8.206,d1,3.5,,,,,2,raw,hillslope mineral soil
+SALM,SALM_02,SALM_02E,E,,,34.565,8.354,e1,2.29,,,,,2,raw,hillslope mineral soil
+SALM,SALM_02,SALM_02F,F,,,33.851,8.622,f1,1.6,,,,,2,raw,hillslope mineral soil
+SALM,SALM_02,SALM_02G,G,,,34.58,8.079,g1,1.17,,,,,2,raw,hillslope mineral soil
+RIDG,RIDG_02,RIDG_02A,A,,,33.739,8.155,h1,11.52,,,,,2,raw,ridgetop mineral soil
+RIDG,RIDG_02,RIDG_02B,B,,,33.207,8.514,a2,3.46,,,,,2,raw,ridgetop mineral soil
+RIDG,RIDG_02,RIDG_02C,C,,,34.962,8.702,b2,2.05,,,,,2,raw,ridgetop mineral soil
+RIDG,RIDG_02,RIDG_02D,D,,,34.177,8.465,c2,1.65,,,,,2,raw,ridgetop mineral soil
+RIDG,RIDG_02,RIDG_02E,E,,,33.603,8.204,d2,1.71,,,,,2,raw,ridgetop mineral soil
+RIDG,RIDG_02,RIDG_02F,F,,,34.39,8.985,e2,0.64,,,,,2,raw,ridgetop mineral soil
+RIDG,RIDG_02,RIDG_02G,G,,,35.131,8.756,f2,2.89,,,,,2,raw,ridgetop mineral soil
+SALM,SALM_03,SALM_03A,A,,,35.148,8.961,g2,12.45,,,,,2,raw,ridgetop mineral soil
+SALM,SALM_03,SALM_03B,B,,,33.828,8.841,h2,10.34,,,,,2,raw,ridgetop mineral soil
+SALM,SALM_03,SALM_03C,C,,,34.059,8.115,a3,5.64,,,,,2,raw,ridgetop mineral soil
+SALM,SALM_03,SALM_03D,D,,,34.133,8.234,b3,0.8,,,,,2,raw,ridgetop mineral soil
+SALM,SALM_03,SALM_03E,E,,,34.283,8.602,c3,1.49,,,,,2,raw,ridgetop mineral soil
+SALM,SALM_03,SALM_03F,F,,,34.961,8.097,d3,3.85,,,,,2,raw,ridgetop mineral soil
+SALM,SALM_03,SALM_03G,G,,,33.895,8.386,e3,1.15,,,,,2,raw,ridgetop mineral soil
+GOG,GOG_02,GOG_02A,A,,,33.959,8.881,f3,5.15,,,,,2,raw,ridgetop mineral soil
+GOG,GOG_02,GOG_02B,B,,,34.641,8.036,g3,5.69,,,,,2,raw,ridgetop mineral soil
+GOG,GOG_02,GOG_02C,C,,,30.697,8.139,h3,3.58,,,,,2,raw,ridgetop mineral soil
+GOG,GOG_02,GOG_02D,D,,,33.624,8.458,a4,2.01,,,,,2,raw,ridgetop mineral soil
+GOG,GOG_02,GOG_02E,E,,,32.489,8.195,b4,2.45,,,,,2,raw,ridgetop mineral soil
+GOG,GOG_02,GOG_02F,F,,,34.074,8.492,c4,1.27,,,,,2,raw,ridgetop mineral soil
+GOG,GOG_02,GOG_02G,G,,,34.848,8.828,d4,1.18,,,,,2,raw,ridgetop mineral soil
+WOLF,WOLF_02,WOLF_02A,A,,,30.677,8.972,d5,9.61,,,,,2,raw,hillslope mineral soil
+WOLF,WOLF_02,WOLF_02B,B,,,34.816,8.375,e5,6.2,,,,,2,raw,hillslope mineral soil
+WOLF,WOLF_02,WOLF_02C,C,,,33.799,8.422,f5,3.68,,,,,2,raw,hillslope mineral soil
+WOLF,WOLF_02,WOLF_02D,D,,,34.192,8.062,g5,2.24,,,,,2,raw,hillslope mineral soil
+WOLF,WOLF_02,WOLF_02E,E,,,34.39,8.381,h5,1.59,,,,,2,raw,hillslope mineral soil
+WOLF,WOLF_02,WOLF_O2F,F,,,34.7,8.522,a6,1.08,,,,,2,raw,hillslope mineral soil
+WOLF,WOLF_02,WOLF_02G,G,,,35.233,8.206,b6,1.01,,,,,2,raw,hillslope mineral soil
+WOLF,WOLF_03,WOLF_03A,A,,,34.923,8.232,c6,6.99,,,,,2,raw,ridgetop mineral soil
+WOLF,WOLF_03,WOLF_03B,B,,,33.909,8.095,d6,3.89,,,,,2,raw,ridgetop mineral soil
+WOLF,WOLF_03,WOLF_03C,C,,,34.617,8.746,e6,2.63,,,,,2,raw,ridgetop mineral soil
+WOLF,WOLF_03,WOLF_03D,D,,,34.388,8.069,f6,1.53,,,,,2,raw,ridgetop mineral soil
+WOLF,WOLF_03,WOLF_03E,E,,,34.872,8.241,g6,2.21,,,,,2,raw,ridgetop mineral soil
+WOLF,WOLF_03,WOLF_03F,F,,,34.438,8.571,h6,1.05,,,,,2,raw,ridgetop mineral soil
+WOLF,WOLF_03,WOLF_03G,G,,,34.182,8.691,a8,1.33,,,,,2,raw,ridgetop mineral soil
+WOLF,WOLF_04,WOLF_04A,A,,,34.22,8.186,b7,10.58,,,,,2,raw,ridgetop mineral soil
+WOLF,WOLF_04,WOLF_04B,B,,,34.231,8.301,c7,4.36,,,,,2,raw,ridgetop mineral soil
+WOLF,WOLF_04,WOLF_04C,C,,,34.01,8.925,d7,4.09,,,,,2,raw,ridgetop mineral soil
+WOLF,WOLF_04,WOLF_04D,D,,,34.211,8.467,e7,2.37,,,,,2,raw,ridgetop mineral soil
+WOLF,WOLF_04,WOLF_04E,E,,,34.35,8.757,f7,1.65,,,,,2,raw,ridgetop mineral soil
+WOLF,WOLF_04,WOLF_04F,F,,,34.876,8.798,g7,1.53,,,,,2,raw,ridgetop mineral soil
+WOLF,WOLF_04,WOLF_04G,G,,,34.789,8.959,h7,0.9,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_05,WORF_05A,A,,,34.607,8.275,a8,4.05,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_05,WORF_05B,B,,,34.762,8.156,b8,1.94,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_05,WORF_05C,C,,,34.064,8.515,c8,1.75,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_05,WORF_05D,D,,,34.207,8.038,d8,1.43,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_05,WORF_05E,E,,,34.793,8.263,e8,1.12,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_05,WORF_05F,F,,,34.501,8.407,f8,1.12,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_05,WORF_05G,G,,,35.469,8.064,g8,0.98,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_02,WORF_02A,A,,,35.112,8.103,h8,33.88,,,,,2,raw,hillslope mineral soil
+WORF,WORF_02,WORF_02B,B,,,34.249,8.128,a9,32,,,,,2,raw,hillslope mineral soil
+WORF,WORF_02,WORF_02C,C,,,34.439,8.405,b9,8.93,,,,,2,raw,hillslope mineral soil
+WORF,WORF_02,WORF_02D,D,,,33.632,8.813,c9,4.19,,,,,2,raw,hillslope mineral soil
+WORF,WORF_02,WORF_02E,E,,,33.508,8.302,d9,5.34,,,,,2,raw,hillslope mineral soil
+WORF,WORF_02,WORF_02F,F,,,34.448,8.586,e9,5.58,,,,,2,raw,hillslope mineral soil
+WORF,WORF_02,WORF_02G,G,,,33.89,8.318,f9,3.31,,,,,2,raw,hillslope mineral soil
+WORF,WORF_03,WORF_03A,A,,,33.328,8.27,g9,6.91,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_03,WORF_03B,B,,,33.985,8.961,h9,4.84,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_03,WORF_03C,C,,,34.745,8.255,a10,3.19,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_03,WORF_03D,D,,,34.392,8.462,b10,2.41,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_03,WORF_03E,E,,,34.336,8.299,c10,1.99,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_03,WORF_03F,F,,,34.177,8.203,d10,1.63,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_03,WORF_03G,G,,,34.091,8.965,e10,4.89,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_04,WORF_04A,A,,,34.765,8.658,f10,6.9,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_04,WORF_04B,B,,,34.235,8.436,g10,4.03,,,,,2,raw,ridgetop mineral soil
+WORF,WORF_04,WORF_04C,C,,,34.729,8.759,h10,1.1,,,,,2,raw,ridgetop mineral soil
+,,blank,,,,35.34,,a11,,,,,,2,std,
+,,standard_1,,,,34.104,0.245,b11,2.31,,,,,2,std,
+,,standard_2,,,,34.232,0.586,c11,1.68,,,,,2,std,
+,,standard_3,,,,33.878,1.161,d11,1.22,,,,,2,std,
+,,standard_4,,,,34.453,2.817,e11,1.22,,,,,2,std,
+,,QC_1,,,,34.138,8.852,f11,1.16,,,,,2,std,
+,,QC_2,,,,34.136,8.689,g11,1.16,,,,,2,std,
+,,QC_3,,,,34.048,8.033,h11,1.16,,,,,2,std,
+,,QC_04,,,,33.98,8.305,a12,1.14,,,,,2,std,
+,,QC_05,,,,33.724,8.801,b12,1.16,,,,,2,std,
+,,QC_06,,,,33.422,8.146,c12,1.17,,,,,2,std,
+,,QC_07,,,,34.459,8.128,d12,1.16,,,,,2,std,
+,,QC_08,,,,34.228,8.566,e12,1.14,,,,,2,std,
+,,QC_09,,,,34.339,8.773,f12,1.17,,,,,2,std,
+,,QC_10,,,,33.757,8.697,g12,1.18,,,,,2,std,
+,,QC_11,,,,33.426,8.371,h12,1.16,,,,,2,std,
+SALM,SALM_03,SALM_03D_kmd,D,1.006,0.8673,33.439,8.711,a1,0.5,0.1,-25.2,8.6,0.04,3,kmd,ridgetop mineral soil
+SALM,SALM_03,SALM_03E_kmd,E,0.9733,0.8682,33.613,8.334,b1,0.3,0.1,-25.1,11.8,0.03,3,kmd,ridgetop mineral soil
+SALM,SALM_03,SALM_03F_kmd,F,1.0019,0.8804,34.434,8.641,c1,0.3,0.1,-24.9,5.9,0.03,3,kmd,ridgetop mineral soil
+SALM,SALM_03,SALM_03G_kmd,G,1.0197,0.8852,33.858,8.865,d1,0.2,0.1,-25.8,14.1,0.02,3,kmd,ridgetop mineral soil
+SALM,SALM_01,SALM_01D_standard,D,,,34.671,8.936,e1,4.5,0.4,-25.6,1.5,0.4,3,kmd std,ridgetop mineral soil
+SALM,SALM_03,SALM_03F_standard,F,,,33.862,8.139,f1,1.2,0.2,-26.2,3,0.1,3,kmd std,ridgetop mineral soil
+,,Batch2_standard,,,,34.296,8.128,g1,5.7,0.4,-26.2,-9.7,0.46,3,kmd std,
+SALM,SALM_02,SALM_02A_kmd,A,0.9519,0.68,30.517,8.328,h1,2,0.2,-26,3.6,0.16,3,kmd,hillslope mineral soil
+SALM,SALM_02,SALM_02B_kmd,B,1.047,0.8048,31.887,8.749,a2,0.9,0.1,-25.9,4.1,0.08,3,kmd,hillslope mineral soil
+SALM,SALM_02,SALM_02C_kmd,C,0.9771,0.8204,33.562,8.236,b2,0.5,0.1,-25,8.8,0.04,3,kmd,hillslope mineral soil
+SALM,SALM_02,SALM_02D_kmd,D,0.9887,0.8426,34.186,8.292,c2,0.5,0.1,-24.3,9.7,0.04,3,kmd,hillslope mineral soil
+SALM,SALM_02,SALM_02E_kmd,E,0.9797,0.8512,32.226,8.116,d2,0.3,0.1,-24.5,10.8,0.03,3,kmd,hillslope mineral soil
+SALM,SALM_02,SALM_02F_kmd,F,0.9644,0.8336,33.975,8.791,e2,0.8,0.1,-27.1,-2.3,0.07,3,kmd,hillslope mineral soil
+SALM,SALM_02,SALM_02G_kmd,G,1.0185,0.6764,32.189,8.278,f2,1,0.1,-27.5,-3.4,0.08,3,kmd,hillslope mineral soil
+GOG,GOG_02,GOG_02A_kmd,A,1.0467,0.8603,34.34,8.408,g2,0.6,0.1,-24.9,3.2,0.05,3,kmd,ridgetop mineral soil
+GOG,GOG_02,GOG_02B_kmd,B,1.0522,0.8559,34.073,8.841,h2,1.1,0.1,-25.9,-2,0.1,3,kmd,ridgetop mineral soil
+GOG,GOG_02,GOG_02C_kmd,C,0.949,0.7972,34.279,8.392,a3,0.7,0.1,-25.6,1.8,0.06,3,kmd,ridgetop mineral soil
+GOG,GOG_02,GOG_02D_kmd,D,1.0137,0.873,33.91,8.389,b3,0.4,0.1,-25.7,6.3,0.04,3,kmd,ridgetop mineral soil
+GOG,GOG_02,GOG_02E_kmd,E,1.0181,0.8696,35.007,8.321,c3,0.4,0.1,-25,10.4,0.03,3,kmd,ridgetop mineral soil
+GOG,GOG_02,GOG_02F_kmd,F,1.0322,0.9109,34.054,8.404,d3,0.2,0.2,-24.6,10.6,0.02,3,kmd,ridgetop mineral soil
+GOG,GOG_02,GOG_02G_kmd,G,1.0076,0.8684,34.301,8.688,e3,0.2,0.2,-23.9,12,0.02,3,kmd,ridgetop mineral soil
+GOG,GOG_01,GOG_01F_standard,F,,,34.853,8.993,f3,1,0.2,-26.2,-3.2,0.09,3,kmd std,ridgetop mineral soil
+GOG,GOG_02,GOG_02E_standard,E,,,34.078,8.751,g3,1.9,0.2,-26.8,-0.1,0.17,3,kmd std,ridgetop mineral soil
+SALM,SALM_03,SALM_03A_kmd,A,0.9774,0.7051,34.804,8.399,h3,0.7,0.1,-25.6,-0.5,0.06,3,kmd,ridgetop mineral soil
+SALM,SALM_03,SALM_03B_kmd,B,1.0022,0.7659,30.699,8.806,a4,0.9,0.1,-26.4,-0.1,0.08,3,kmd,ridgetop mineral soil
+SALM,SALM_03,SALM_03C_kmd,C,1.0154,0.8832,30.604,8.334,b4,0.6,0.1,-26.5,4.5,0.05,3,kmd,ridgetop mineral soil
+,,batch1_standard,,,,30.58,8.444,c4,6.3,0.4,-26.2,-14.8,0.54,3,kmd std,
+SALM,SALM_01,SALM_01G_kmd_dup,G,,,30.67,8.931,d4,1,0.1,-24.5,1.7,0.09,3,dup,ridgetop mineral soil
+SALM,SALM_01,SALM_02E_kmd_dup,E,,,30.621,8.918,e4,0.4,0.1,-24.5,6.9,0.04,3,dup,ridgetop mineral soil
+SALM,SALM_03,SALM_03A_kmd_dup,A,,,31.092,8.907,f4,0.9,0.1,-26.2,-2.2,0.08,3,dup,ridgetop mineral soil
+WOLF,WOLF_01,WOLF_01B_standard,B,,,35.188,8.934,g4,3.6,0.3,-26.2,-4.5,0.32,3,kmd std,hillslope mineral soil
+WOLF,WOLF_02,WOLF_02A_kmd,A,1.0077,0.7077,34.836,8.894,h4,1.2,0.1,-27.5,-7.8,0.1,3,kmd,hillslope mineral soil
+WOLF,WOLF_02,WOLF_02B_kmd,B,0.9738,0.7861,34.939,8.424,a5,1,0.1,-27.7,-4.3,0.08,3,kmd,hillslope mineral soil
+WOLF,WOLF_02,WOLF_02C_kmd,C,0.9533,1.0786,34.693,8.114,b5,0.7,0.1,-26.5,3,0.05,3,kmd,hillslope mineral soil
+WOLF,WOLF_02,WOLF_02D_kmd,D,1.0117,0.9193,34.75,8.752,c5,0.4,0.1,-25.2,12.3,0.04,3,kmd,hillslope mineral soil
+WOLF,WOLF_02,WOLF_02E_kmd,E,1.0374,0.9358,34.415,8.301,d5,0.3,0.1,-25.6,13.3,0.02,3,kmd,hillslope mineral soil
+WOLF,WOLF_02,WOLF_02F_kmd,F,0.9664,0.8722,34.038,8.249,e5,0.2,0.3,-22,18.1,0.02,3,kmd,hillslope mineral soil
+WOLF,WOLF_02,WOLF_02G_kmd,G,1.0033,0.891,34.318,8.284,f5,0.2,0.4,-22.8,15.6,0.02,3,kmd,hillslope mineral soil
+WOLF,WOLF_02,WOLF_02B_standard,B,,,34.772,8.531,g5,5.5,0.4,-27.5,-2.9,0.47,3,kmd std,hillslope mineral soil
+WOLF,WOLF_03,WOLF_03A_kmd,A,0.9505,0.7619,30.639,8.792,h5,1,0.1,-26.7,0.1,0.09,3,kmd,ridgetop mineral soil
+WOLF,WOLF_03,WOLF_03B_kmd,B,1.0048,0.854,35.271,8.094,a6,0.7,0.1,-26.2,-0.4,0.06,3,kmd,ridgetop mineral soil
+WOLF,WOLF_03,WOLF_03C_kmd,C,0.9831,0.8592,34.372,8.042,b6,0.4,0.2,-25.7,11.3,0.03,3,kmd,ridgetop mineral soil
+WOLF,WOLF_03,WOLF_03D_kmd,D,1.0586,0.9601,34.056,8.695,c6,0.2,0.1,-24.6,13.9,0.02,3,kmd,ridgetop mineral soil
+WOLF,WOLF_03,WOLF_03E_kmd,E,1.0021,0.8612,34.452,8.704,d6,0.3,0.2,-24.7,15.4,0.03,3,kmd,ridgetop mineral soil
+WOLF,WOLF_03,WOLF_03F_kmd,F,1.0517,0.9419,34.519,8.195,e6,0.3,0.2,-25,15.5,0.02,3,kmd,ridgetop mineral soil
+WOLF,WOLF_03,WOLF_03G_kmd,G,1.0253,0.9192,34.018,8.039,f6,0.3,0.2,-25.1,13.4,0.02,3,kmd,ridgetop mineral soil
+WOLF,WOLF_03,WOLF_03E_standard,E,,,33.639,8.502,g6,1.9,0.2,-27.1,-4.8,0.16,3,kmd std,ridgetop mineral soil
+WOLF,WOLF_04,WOLF_04A_kmd,A,0.9669,0.7056,33.675,8.642,h6,1.3,0.2,-27.1,2,0.11,3,kmd,ridgetop mineral soil
+WOLF,WOLF_04,WOLF_04B_kmd,B,0.9854,0.8283,34.006,8.367,a7,0.7,0.1,-25.6,4,0.06,3,kmd,ridgetop mineral soil
+WOLF,WOLF_04,WOLF_04C_kmd,C,0.9668,0.7909,33.859,8.048,b7,0.7,0.1,-26,6.3,0.05,3,kmd,ridgetop mineral soil
+WOLF,WOLF_04,WOLF_04D_kmd,D,0.9836,0.8291,34.269,8.638,c7,0.4,0.1,-24.3,8.2,0.03,3,kmd,ridgetop mineral soil
+WOLF,WOLF_04,WOLF_04E_kmd,E,1.0318,0.9201,34.382,8.075,d7,0.3,0.2,-23.2,9.7,0.02,3,kmd,ridgetop mineral soil
+WOLF,WOLF_04,WOLF_04F_kmd,F,0.9776,0.866,34.024,8.622,e7,0.3,0.2,-23.1,11,0.03,3,kmd,ridgetop mineral soil
+WOLF,WOLF_04,WOLF_04G_kmd,G,0.9531,0.8451,33.778,8.843,f7,0.2,0.3,-22.2,13.8,0.02,3,kmd,ridgetop mineral soil
+WOLF,WOLF_04,WOLF_04C_standard,C,,,34.358,8.337,g7,3.6,0.3,-25.9,-2,0.3,3,kmd std,ridgetop mineral soil
+WORF,WORF_04,WORF_04D,D,,,34.897,8.442,h7,0.9,0.1,-26.2,-5.1,0.08,3,raw,ridgetop mineral soil
+WORF,WORF_04,WORF_04E,E,,,34.308,8.537,a8,0.8,0,-25.7,-38.5,0.07,3,raw,ridgetop mineral soil
+WORF,WORF_04,WORF_04F,F,,,34.43,8.407,b8,1.5,0.1,-24.1,-1,0.12,3,raw,ridgetop mineral soil
+WORF,WORF_01,WORF_01D_kmd,D,0.9937,0.8652,34.141,8.314,c8,1.1,0.1,-26.9,7.9,0.09,3,kmd,hillslope mineral soil
+WORF,WORF_01,WORF_01E_kmd,E,0.9563,0.9122,33.749,8.465,d8,0.5,0.1,-24.7,12.9,0.04,3,kmd,hillslope mineral soil
+WORF,WORF_01,WORF_01F_kmd,F,1.0598,0.959,34.167,8.025,e8,0.4,0.2,-24.9,15.8,0.04,3,kmd,hillslope mineral soil
+WORF,WORF_01,WORF_01G_kmd,G,1.0446,0.8756,33.869,8.552,f8,0.5,0.2,-25.2,15.4,0.04,3,kmd,hillslope mineral soil
+WORF,WORF_01,WORF_01E_standard,E,,,34.443,8.682,g8,1.6,0.2,-26.5,-1.2,0.14,3,kmd std,hillslope mineral soil
+WORF,WORF_02,WORF_02A_kmd,A,0.9478,0.2391,33.384,8.677,h8,8.7,0.4,-29.2,-14.2,0.75,3,kmd,hillslope mineral soil
+WORF,WORF_02,WORF_02B_kmd,B,0.9914,0.2513,34.08,8.238,a9,6.7,0.2,-28.8,-15.8,0.55,3,kmd,hillslope mineral soil
+WORF,WORF_02,WORF_02C_kmd,C,0.9596,0.801,35.075,8.777,b9,1.4,0.2,-27.5,4.2,0.13,3,kmd,hillslope mineral soil
+WORF,WORF_02,WORF_02D_kmd,D,0.9352,0.8459,34.032,8.213,c9,0.7,0.2,-25.1,10.5,0.06,3,kmd,hillslope mineral soil
+WORF,WORF_02,WORF_02E_kmd,E,0.9495,0.9413,33.823,8.896,d9,0.9,0.2,-23.5,9.9,0.08,3,kmd,hillslope mineral soil
+WORF,WORF_02,WORF_02F_kmd,F,0.9986,0.7875,33.792,8.618,e9,0.9,0.1,-24.8,3.9,0.08,3,kmd,hillslope mineral soil
+WORF,WORF_02,WORF_02G_kmd,G,1.0339,0.8645,34.205,8.202,f9,0.5,0.2,-23.5,10.5,0.04,3,kmd,hillslope mineral soil
+WORF,WORF_03,WORF_03A_kmd,A,0.9839,0.7987,35.369,8.646,g9,0.7,0.1,-27.3,0.8,0.06,3,kmd,ridgetop mineral soil
+WORF,WORF_03,WORF_03B_kmd,B,1.0115,0.7288,34.216,8.077,h9,0.6,0.1,-26.5,3.5,0.05,3,kmd,ridgetop mineral soil
+WORF,WORF_03,WORF_03C_kmd,C,0.9615,0.8106,33.541,8.435,a10,0.5,0.1,-27,5.2,0.04,3,kmd,ridgetop mineral soil
+WORF,WORF_03,WORF_03D_kmd,D,0.9813,0.9202,34.202,8.382,b10,0.4,0.1,-26.2,5.2,0.04,3,kmd,ridgetop mineral soil
+WORF,WORF_03,WORF_03E_kmd,E,0.9712,0.8343,34.109,8.38,c10,0.4,0.1,-23.9,9.9,0.03,3,kmd,ridgetop mineral soil
+WORF,WORF_03,WORF_03F_kmd,F,1.0577,0.9425,35.076,8.546,d10,0.3,0.2,-24,12.1,0.03,3,kmd,ridgetop mineral soil
+WORF,WORF_03,WORF_03G_kmd,G,1.0068,0.8172,33.716,8.593,e10,0.4,0.2,-23.7,12.9,0.04,3,kmd,ridgetop mineral soil
+WORF,WORF_03,WORF_03C_standard,C,,,34.505,8.505,f10,2.8,0.3,-26.9,-1.1,0.24,3,kmd std,ridgetop mineral soil
+WORF,WORF_04,WORF_04A_kmd,A,1.0218,0.8514,34.013,8.926,g10,0.9,0.1,-27.6,6,0.08,3,kmd,ridgetop mineral soil
+WORF,WORF_04,WORF_04B_kmd,B,1.0478,0.8656,30.364,8.192,h10,0.4,0.1,-24.8,4.3,0.04,3,kmd,ridgetop mineral soil
+,,blank,,,,30.478,,a11,0,0.1,nr,-43.8,0,3,std,
+,,standard_1,,,,31.184,0.291,b11,2.3,0,-22.8,-43.8,0.01,3,std,
+,,standard_2,,,,30.78,0.562,c11,1.7,0.1,-22.7,-43.9,0.01,3,std,
+,,standard_3,,,,31.649,1.271,d11,1.3,0.2,-21.2,-33.2,0.02,3,std,
+,,standard_4,,,,32.192,2.782,e11,1.3,0.2,-21.4,-3.9,0.03,3,std,
+,,QC_1,,,,30.556,8.031,f11,1.1,0.1,-21.4,1.3,0.09,3,std,
+,,QC_2,,,,30.839,8.995,g11,1.1,0.1,-21.7,1.2,0.1,3,std,
+,,QC_3,,,,30.428,8.683,h11,1.1,0.1,-21.1,1.1,0.1,3,std,
+,,QC_04,,,,30.272,8.394,a12,1.1,0.1,-20.8,1.3,0.1,3,std,
+,,QC_05,,,,31.423,8.904,b12,1.1,0.1,-21.2,1,0.1,3,std,
+,,QC_06,,,,31.338,8.847,c12,1.1,0.1,-21.4,1.2,0.1,3,std,
+,,QC_07,,,,31.397,8.809,d12,1.1,0.1,-21.6,0.2,0.1,3,std,
+,,QC_08,,,,31.334,8.536,e12,1.1,0.1,-21.5,1,0.1,3,std,
+,,QC_09,,,,30.209,8.003,f12,1.1,0.1,-21.6,1.7,0.09,3,std,
+,,QC_10,,,,31.268,8.044,g12,1.1,0.1,-21.4,1.3,0.09,3,std,
+,,QC_11,,,,30.427,8.965,h12,0.2,0,-21.6,-28,0.02,3,std,
+WORF,WORF_04,WORF_04C_kmd,C,1.0206,0.869,30.542,8.557,a1,0.39,0.13,-24.9,8.2,0.033241549,4,kmd,ridgetop mineral soil
+WORF,WORF_04,WORF_04D_kmd,D,0.9853,0.8793,30.286,8.024,b1,0.21,0.16,-26.7,13.7,0.016880089,4,kmd,ridgetop mineral soil
+WORF,WORF_04,WORF_04E_kmd,E,0.9678,0.8339,30.969,8.592,c1,0.19,0.17,-24.2,13.3,0.016455742,4,kmd,ridgetop mineral soil
+WORF,WORF_04,WORF_04F_kmd,F,0.9755,0.8607,31.81,8.195,d1,0.2,0.25,-22.4,16.4,0.015984266,4,kmd,ridgetop mineral soil
+WORF,WORF_04,WORF_04G_kmd,G,0.9629,0.8195,30.465,8.281,e1,0.43,0.24,-24.3,14.9,0.035646227,4,kmd,ridgetop mineral soil
+WORF,WORF_04,WORF_04B_standard,B,,,30.498,8.348,f1,3.59,0.29,-26.3,-4.3,0.299461626,4,kmd std,ridgetop mineral soil
+WORF,WORF_05,WORF_05A_kmd,A,0.9885,0.8619,30.064,8.853,g1,0.71,0.08,-27.4,3.4,0.063042921,4,kmd,ridgetop mineral soil
+WORF,WORF_05,WORF_05B_kmd,B,1.0019,0.9026,30.989,8.913,h1,0.51,0.06,-26.2,-0.4,0.045829666,4,kmd,ridgetop mineral soil
+WORF,WORF_05,WORF_05C_kmd,C,0.9769,0.8408,31.093,8.662,a2,0.34,0.09,-25.9,7.6,0.029752324,4,kmd,ridgetop mineral soil
+WORF,WORF_05,WORF_05D_kmd,D,0.9511,0.8524,30.864,8.126,b2,0.3,0.1,-24.8,7.3,0.024471449,4,kmd,ridgetop mineral soil
+WORF,WORF_05,WORF_05E_kmd,E,1.0199,0.9282,30.844,8.459,c2,0.24,0.13,-25,14.2,0.020416389,4,kmd,ridgetop mineral soil
+WORF,WORF_05,WORF_05F_kmd,F,1.0426,0.9375,31.256,8.599,d2,0.25,0.24,-24,15.7,0.021076579,4,kmd,ridgetop mineral soil
+WORF,WORF_05,WORF_05G_kmd,G,1.057,0.937,30.644,8.786,e2,0.23,0.15,-23.8,13.3,0.019803468,4,kmd,ridgetop mineral soil
+,,batch3_standard,,,,31.761,8.408,f2,5.83,0.43,-26,-10.9,0.490531717,4,kmd std,
+,,batch4_standard,,,,30.472,8.527,g2,5.19,0.43,-26.1,-8.4,0.442758677,4,kmd std,
+,,batch5_standard,,,,31.305,8.189,h2,5.56,0.39,-26.1,-12.3,0.455425666,4,kmd std,
+,,batch6_standard,,,,31.577,8.193,a3,5.5,0.41,-26.1,-12.6,0.450522747,4,kmd std,
+,,raw_char_standard_01,,,,30.376,8.108,b3,7.61,0.1,-26.3,-4,0.616840505,4,raw  char st,
+,,raw_char_standard_02,,,,30.421,8.624,c3,6.64,0.09,-26.2,-5.9,0.572648088,4,raw  char st,
+,,raw_char_standard_03,,,,30.751,8.436,d3,7.76,0.1,-26.2,-7,0.654361455,4,raw  char st,
+,,raw_char_standard_04,,,,31.348,8.686,e3,7.63,0.1,-26.2,-3.9,0.662308282,4,raw  char st,
+,,raw_char_standard_05,,,,30.509,8.949,f3,7.59,0.1,-26.3,-4.1,0.679377922,4,raw  char st,
+,,raw_char_standard_06,,,,31.362,8.297,g3,7.5,0.09,-26.3,-4.2,0.622200327,4,raw  char st,
+EELS,EELS_01,eels_01C_dup,C,,,32.032,8.108,h3,5.67,0.4,-27.1,0.6,0.460078082,4,dup,valley mineral soil
+GOG,GOG_01,gog_01C_dup,C,,,30.949,8.778,a4,2.77,0.15,-25.9,1.7,0.243001374,4,dup,ridgetop mineral soil
+GOG,GOG_02,gog_02C_dup,C,,,31.895,8.553,b4,3.6,0.13,-25.5,1.3,0.307791252,4,dup,ridgetop mineral soil
+RIDG,RIDG_01,ridg_01F_dup,F,,,30.35,8.543,c4,1.58,0.08,-27,-2.8,0.134975043,4,dup,ridgetop mineral soil
+RIDG,RIDG_02,ridg_02G_dup,G,,,30.481,8.176,d4,2.87,0.09,-27.1,-1.9,0.234435926,4,dup,ridgetop mineral soil
+WOLF,WOLF_01,wolf_01F_dup,F,,,30.318,8.729,e4,0.54,0.06,-25.7,-2.8,0.046818864,4,dup,hillslope mineral soil
+WOLF,WOLF_02,wolf_02E_dup,E,,,30.081,8.36,f4,1.59,0.08,-26,0.1,0.132651798,4,dup,hillslope mineral soil
+WOLF,WOLF_03,wolf_03E_dup,E,,,30.222,8.328,g4,2.22,0.08,-27,0.7,0.185004605,4,dup,ridgetop mineral soil
+WOLF,WOLF_04,wolf_04C_dup,C,,,30.609,8.031,h4,4.07,0.15,-25.8,1.4,0.326950844,4,dup,ridgetop mineral soil
+WORF,WORF_04,WORF_04G,G,,,34.647,8.551,a5,3,0.07,-24.2,-0.2,0.256758996,4,raw,ridgetop mineral soil
+EELS,EELS_01,EELS_01C_standard,C,,,34.781,8.626,b5,5.02,0.35,-27.3,-0.2,0.432814984,4,kmd std,valley mineral soil
+RIDG,RIDG_01,RIDG_01C_standard,C,,,34.401,8.159,c5,4.84,0.24,-27.8,-0.3,0.39514037,4,kmd std,ridgetop mineral soil
+SALM,SALM_01,salm_01D_dup,D,,,30.786,8.066,d5,5.18,0.31,-25.3,1.8,0.417473817,4,dup,ridgetop mineral soil
+SALM,SALM_02,salm_02F_dup,F,,,32.083,8.596,e5,1.64,0.11,-25.6,-0.4,0.141152165,4,dup,hillslope mineral soil
+SALM,SALM_03,salm_03C_dup,C,,,30.301,8.939,f5,5.55,0.24,-26.7,1.3,0.496077582,4,dup,ridgetop mineral soil
+WORF,WORF_01,worf_01E_dup,E,,,30.813,8.068,g5,1.95,0.07,-26.2,-1.2,0.157623548,4,dup,hillslope mineral soil
+WORF,WORF_02,worf_02D_dup,D,,,30.675,8.761,h5,4.84,0.19,-25.9,1.8,0.423993414,4,dup,hillslope mineral soil
+WORF,WORF_03,worf_03A_dup,A,,,30.731,8.255,a6,6.88,0.29,-27.6,-0.6,0.567712117,4,dup,ridgetop mineral soil
+WORF,WORF_04,worf_04D_dup,D,,,31.731,8.83,b6,1.02,0.06,-26.1,-2.8,0.089693904,4,dup,ridgetop mineral soil
+WORF,WORF_05,worf_05B_dup,B,,,30.407,8.718,c6,1.92,0.08,-26.5,0.5,0.167774684,4,dup,ridgetop mineral soil
+RIDG,RIDG_01,ridg_01D_kmd_dup,D,,,30.589,8.079,d6,0.35,0.08,-26.7,2.4,0.028385001,4,dup,ridgetop mineral soil
+GOG,GOG_01,gog_01G_kmd_dup,G,,,30.203,8.558,e6,0.24,0.23,-25.8,11.2,0.020275015,4,dup,ridgetop mineral soil
+GOG,GOG_02,gog_02E_kmd_dup,E,,,32.148,8.366,f6,0.69,0.17,-26,10.9,0.05792267,4,dup,ridgetop mineral soil
+EELS,EELS_01,eels_01D_kmd_dup,D,,,30.598,8.044,g6,0.59,0.07,-26.9,0.6,0.047101562,4,dup,valley mineral soil
+WOLF,WOLF_01,wolf_01B_kmd_dup,B,,,31.316,8.875,h6,0.63,0.12,-25.7,8.2,0.055713345,4,dup,hillslope mineral soil
+WOLF,WOLF_02,wolf_02E_kmd_dup,E,,,30.836,8.322,a7,0.37,0.18,-24.5,12.9,0.030412499,4,dup,hillslope mineral soil
+WOLF,WOLF_03,wolf_03D_kmd_dup,D,,,31.281,8.298,b7,0.3,0.17,-25.2,12.3,0.024942958,4,dup,ridgetop mineral soil
+WOLF,WOLF_04,wolf_04D_kmd_dup,D,,,30.571,8.041,c7,0.45,0.1,-24.2,7,0.035881998,4,dup,ridgetop mineral soil
+,,blank,,,,33.942,,a11,9.27,0.94,-21.3,0.3,0,4,std,
+,,standard_1,,,,33.783,0.264,b11,14.15,1.95,-22.8,-6.7,0.037343679,4,std,
+,,standard_2,,,,33.639,0.68,c11,1.58,0.25,-19.7,-30,0.010750453,4,std,
+,,standard_3,,,,34.182,1.079,d11,1.36,0.12,-22.5,-14.8,0.01471114,4,std,
+,,standard_4,,,,34.485,2.597,e11,2.98,0.3,-21.2,1.6,0.077297134,4,std,
+,,QC_1,,,,31.418,8.5,f11,1.14,0.11,-21.2,1,0.097073485,4,std,
+,,QC_2,,,,30.695,8.518,g11,0.28,0.06,-25.8,0.5,0.023811302,4,std,
+,,QC_3,,,,31.015,8.123,h11,1.15,0.12,-21.2,1.1,0.093711639,4,std,
+,,QC_04,,,,32.172,8.457,a12,1.14,0.11,-21.4,1.9,0.096746642,4,std,
+,,QC_05,,,,34.014,8.098,b12,1.15,0.13,-21.4,0.8,0.093151213,4,std,
+,,QC_06,,,,31.227,8.682,c12,1.15,0.12,-21.8,1.7,0.099966979,4,std,
+,,QC_07,,,,30.267,8.921,d12,1.16,0.13,-21.3,1.3,0.103279041,4,std,
+,,QC_08,,,,31.36,8.547,e12,1.04,0.1,-21.6,0.9,0.089179825,4,std,
+,,QC_09,,,,31.167,8.742,f12,1.14,0.11,-21.6,1.4,0.099873678,4,std,
+,,QC_10,,,,30.518,8.192,g12,1.16,0.1,-21.6,0.4,0.094832476,4,std,
+,,QC_11,,,,31.368,8.526,h12,1.14,0.14,-21.6,1.2,0.096933373,4,std,

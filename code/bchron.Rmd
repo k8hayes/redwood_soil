@@ -1,0 +1,388 @@
+---
+title: "Working with Bchron Package"
+output: html_notebook
+---
+
+Trial for running Bchron
+I've already calibrated my radiocarbon dates with Calib, but I wanted to mess around with the Bchron package mostly to use the BchronDensity function to visualize my dates. I'm using this site: https://cran.r-project.org/web/packages/Bchron/vignettes/Bchron.html for reference.
+
+```{r Installing Bchron}
+getwd()
+setwd(dir = "Desktop/Thesis/Data/bchron")
+# install.packages('Bchron')
+library(Bchron)
+library(ggplot2)
+library(cowplot)
+```
+
+Calibrating radiocabon dates
+```{r Testing Calibration}
+red_c14 <- read.csv(file = "red14_bchron.csv")
+# testing for first date
+# age1 = BchronCalibrate(ages = 480, ageSds = 30, #standard deviation of age calCurves = "intcal13", #calibration curve (choice of intcal13, shcal13 and marine13) ids = "WOMT-01d5") #id number of date
+# summary(age1)
+# plot(age1, xlab = "Age (years BP)")
+```
+
+So far, the one downside is that I'll need to enter each of my dates in a vector. Since I have 45, I'm going to try a work around. 
+
+```{r eval=FALSE, include=FALSE}
+red_ages <- red_c14$ages
+red_SDs <- red_c14$SD
+red_depth <- red_c14$depth
+red_cal <- rep("intcal13", times = length(red_ages))
+all_ages = BchronCalibrate(ages = red_ages,
+                           ageSds = red_SDs,
+                           positions = red_depth,
+                           calCurves = red_cal)
+summary(all_ages)
+plot(all_ages, withPositions=TRUE, 
+     xlab = "Age (cal years BP)",
+     ylab = "Depth (cm)")
+```
+
+Alright, now let's mess with the BchronDensity function:
+```{r BchronDensity}
+# red_density = BchronDensity(ages = red_ages, ageSds = red_SDs, calCurves = red_cal)
+# plot(red_density)
+# rm(red_density)
+```
+
+4/18 - I'm going to rerun the prior two graphs, but remove the two abnormal sites (GOV_01 and WORM_03)
+```{r}
+# removed the sites from the red_c14 file in excel for time's sake
+red_c14_normal <- read.csv(file = "red14_bchron_normal.csv")
+
+# calibrating
+red_ages_norm <- red_c14_normal$ages
+red_SDs_norm <- red_c14_normal$SD
+red_depth_norm <- red_c14_normal$depth
+red_cal_norm <- rep("intcal13", times = length(red_ages_norm))
+
+all_ages_norm = BchronCalibrate(ages = red_ages_norm,
+                           ageSds = red_SDs_norm,
+                           positions = red_depth_norm,
+                           calCurves = red_cal_norm)
+summary(all_ages_norm)
+plot(all_ages_norm, withPositions=TRUE)
+```
+
+
+```{r}
+# bchron density
+# red_density_norm = BchronDensity(ages = red_ages_norm, ageSds = red_SDs_norm, calCurves = red_cal_norm)
+# plot(red_density_norm, bty = "n", xlab = "Age (cal years BP)")
+rm(red_density_norm)
+```
+
+but, what if I could do this in ggplot...
+
+```{r}
+# install.packages("devtools")
+library(devtools)
+devtools::install_github('andrewcparnell/Bchron')
+library(Bchron)
+data(red_c14_normal)
+red_dens <- BchronDensity(ages=  red_c14_normal$ages, ageSds = red_c14_normal$SD, calCurves = red_cal_norm, numMix = 50, store_density = TRUE)
+plot(red_dens$ageGrid, red_dens$densities, type = 'l', bty = "n")  
+plot(red_dens, bty = "n", 
+     xlab = "Ages (cal year BP)")
+```
+
+I should probably also do this for the colluvial hollow/etc
+```{r}
+# using just the non soil sites
+old_red_input <- red_c14[which(red_c14$ages >= 4000),]
+old_red_cal_curve <- rep("intcal13", times = length(old_red_input$ages))
+old_red_c14 <- BchronCalibrate(ages = old_red_input$ages, # calibrating
+                                   ageSds = old_red_input$SD,
+                                   positions = old_red_input$depth,
+                                   calCurves = old_red_cal_curve)
+# plotting by position
+plot(old_red_c14, withPositions = TRUE)
+
+# plotting by density
+red_old_dens <- BchronDensity(ages= old_red_input$ages,
+                          ageSds = old_red_input$SD,
+                          calCurves = old_red_cal_curve, numMix = 50,
+                          store_density = TRUE)
+
+plot(red_old_dens$ageGrid, red_old_dens$densities, type = 'l', bty = "n")  
+plot(red_old_dens, bty = "n", 
+     xlab = "Age (cal year BP)")
+```
+Alright, let's get that out of Bchrondensity format:
+```{r}
+# need to change out of BchronDensity format
+red_dens_ggplot <- data.frame(red_dens$ageGrid, red_dens$densities) # younger dates
+colnames(red_dens_ggplot) <- c("age_grid", "densities")
+red_dens_ggplot$type <- rep("ms", each = length(red_dens_ggplot$age_grid))
+old_dens_ggplot <- data.frame(red_old_dens$ageGrid, red_old_dens$densities) # older dates
+colnames(old_dens_ggplot) <- c("age_grid", "densities")
+old_dens_ggplot$type <- rep("old", each = length(old_dens_ggplot$age_grid))
+
+dens_ggplot <- rbind(red_dens_ggplot, old_dens_ggplot)
+
+# creating plots
+old_dates_plot <- ggplot(old_dens_ggplot, aes(x = old_dens_ggplot$red_old_dens.ageGrid, y = old_dens_ggplot$red_old_dens.densities)) + geom_line() + background_grid(major = "xy") + labs(x = " ", y = " ") 
+old_dates_plot
+plot_grid(soil_dates_plot, old_dates_plot, labels = c("A.", "B.")) + geom_point(data = dates, aes(x = dates$median_cal_age, y = dates$y_axis, color = "red", shape = 4))
+
+
+# let's try this differently
+ggplot(dens_ggplot, aes(x = dens_ggplot$age_grid, dens_ggplot$densities)) + geom_line() + facet_wrap(~dens_ggplot$type)
+```
+
+
+
+```{r}
+# i might try the facet_grid function:
+# need to change out of BchronDensity format, and want to clean up my names a bit
+    # younger dates first
+    red_dens_ggplot <- data.frame(red_dens$ageGrid, red_dens$densities) 
+    red_dens_ggplot$type <- rep(1, length.out = length(red_dens_ggplot$red_dens.ageGrid))
+    names(red_dens_ggplot) <- c("age_grid", "densities", "type")
+    red_dens_ggplot
+    # same thing for older
+    old_dens_ggplot <- data.frame(red_old_dens$ageGrid, red_old_dens$densities) 
+    old_dens_ggplot$type <- rep(2,
+                                length.out =length(old_dens_ggplot$red_old_dens.ageGrid))
+    names(old_dens_ggplot) <- c("age_grid", "densities", "type")
+# so, let's put them together
+complete_density <- rbind(red_dens_ggplot, old_dens_ggplot)
+
+# now, to plot:
+complete_density$type2 <- factor(complete_density$type, labels = c("Mineral Soils", "Colluvial Hollow")) # the solution for my facet label problem, no idea why
+
+ggplot(complete_density, aes(x = complete_density$age_grid, y = complete_density$densities)) + geom_line() + facet_grid(. ~ complete_density$type2, scales = "free_x") + background_grid(major = "xy") + labs(x = "Age (cal year BP)", y = "Densities")
+
+```
+Pretty happy with that, minus the weird overlap. I think I may just clip the agegrid for the younger dates, I think that may solve the issue. 
+```{r}
+# clipping overlap
+red_dens_ggplot <- red_dens_ggplot[-which(red_dens_ggplot$age_grid > 4500),] 
+old_dens_ggplot <- old_dens_ggplot[-which(old_dens_ggplot$age_grid < 4250),]
+
+complete_density <- rbind(red_dens_ggplot, old_dens_ggplot)
+complete_density$type2 <- factor(complete_density$type, labels = c("Mineral Soils", "Colluvial Hollow/Alluvial Fan"))
+
+# giving dates a y-axis
+dates <- read.csv("dates.csv")
+dates <- dates[-which(is.na(dates$error)),]
+length(dates$median_cal_age)
+dates$y_axis <- rep(0.003, each = 40)
+
+density_facet_plot <- ggplot(complete_density, 
+                             aes(x = complete_density$age_grid, y = complete_density$densities)) +  geom_line() + 
+  facet_grid(. ~ complete_density$type2, scales = "free_x") + 
+  background_grid(major = "xy") + 
+  labs(x = "Age (cal year BP)", y = "Densities",
+       title = "Estimate of Site Activity", 
+       subtitle = "Results of Bchron Gaussian Mixture Model") + 
+  panel_border() +
+  theme(plot.title = element_text(hjust = 0)) 
+  
+density_facet_plot + geom_point(data = dates, aes(x = dates$median_cal_age, y = dates$y_axis, color = "red", shape = 4))
+ggplot(dates, aes(x = dates$median_cal_age, y = dates$y_axis)) + geom_point()
+
+density_facet_plot
+
+save_plot("density_facet_plot.png", density_facet_plot, ncol = 2, base_aspect_ratio = 1.1 )
+```
+Yeah!!
+
+# Related radiocarbon figures
+Now that I've tackled the Bchron figures, I should also probably back up and tackle some of the more straightforward radiocarbon graphs (date vs depth, age reversals, etc). I'll start by checking on what sorts of data files I have for that stuff, and how I'll need to clean it up to make it work. 
+```{r}
+getwd()
+dates <- read.csv("dates.csv")
+# should take "modern" out of age for now, turning ages into factors when they need to be numeric
+  # ended up doing in excel
+
+# plotting
+# ggplot(dates, aes(x = dates$median_cal_age, y = dates$depth, color = factor(dates$site))) + geom_point() + facet_grid(.~dates$site_type, scales = "fixed")  + background_grid(major="xy") + scale_y_reverse()  + panel_border()
+```
+
+
+```{r}
+# ggplot(dates, aes(x = dates$median_cal_age, y = dates$depth, color = factor(dates$site_type))) + geom_point() + facet_grid(dates$site_type ~ dates$site, scales = "fixed")  + background_grid(major="xy") + scale_y_reverse()  + panel_border()
+```
+Well, that's a nightmare. I think the best way to clean that up is to split data between mineral soil and the other two (as I did with the bchron data)
+```{r}
+# parsing out mineral soil data
+valley_ms <- dates[which(dates$site_type == "valley mineral soil"),]
+hillslope_ms <- dates[which(dates$site_type == "hillslope mineral soil"),]
+ridgetop_ms <- dates[which(dates$site_type == "ridgetop mineral soil"),]
+ms_dates <- merge(valley_ms, ridgetop_ms, all = TRUE)
+ms_dates <- merge(ms_dates, hillslope_ms, all = TRUE)
+
+ms_ggplot <- ggplot(ms_dates, aes(x = ms_dates$median_cal_age, y = ms_dates$depth, color = ms_dates$site_type, fill = ms_dates$site_type, shape = ms_dates$site_type)) + 
+  geom_point(size = 4) + 
+  scale_shape_manual(values = c(21, 22, 24), 
+                     name = "Site Type:",
+                     labels = c("Hillslope Mineral Soil", "Ridgetop Mineral Soil", "Valley Mineral Soil")) + 
+  scale_color_manual(values = c("#202020", "#E69F00", "#56B4E9"),
+                     name = "Site Type:",
+                     labels = c("Hillslope Mineral Soil", "Ridgetop Mineral Soil", "Valley Mineral Soil")) + 
+  scale_fill_manual(values = c("#20202080", "#E69F0080", "#56B4E980"),
+                    labels = c("Hillslope Mineral Soil", "Ridgetop Mineral Soil", "Valley Mineral Soil"),
+                    name = "Site Type:") + 
+  background_grid() + panel_border() + scale_y_reverse() + labs(x = "Age (cal year BP)", y = "Depth (cm)", title = "Forest Mineral Soil Sites")+ 
+  theme(legend.position = "right")
+ms_ggplot
+save_plot("ms_ggplot.png", ms_ggplot, base_height = 4, base_width = NULL, base_aspect_ratio = 1.5)
+```
+
+That's a start. Let's do the same with the other data types:
+```{r}
+alluvial_dates <- dates[which(dates$site_type == "alluvial fan"),]
+colluvial_dates <- dates[which(dates$site_type == "colluvial hollow"),]
+ns_dates <- merge(alluvial_dates, colluvial_dates, all = TRUE)
+
+ns_ggplot <- ggplot(ns_dates, aes(x = ns_dates$median_cal_age, y = ns_dates$depth, color = ns_dates$site_type, fill = ns_dates$site_type, shape = ns_dates$site_type)) + 
+  geom_point(size = 4)+ 
+  scale_shape_manual(values = c(21,22),
+                     name = "Site Type:",
+                     labels = c("Alluvial Fan", "Colluvial Hollow")) +
+  scale_color_manual(values = c("#D55E00", "#009E73"),
+                     name = "Site Type:",
+                     labels = c("Alluvial Fan", "Colluvial Hollow")) +
+  scale_fill_manual(values = c("#D55E0080", "#009E7380"),
+                    name = "Site Type:",
+                    labels = c("Alluvial Fan", "Colluvial Hollow")) + 
+  background_grid() + scale_y_reverse() + labs(x = "Age (cal year BP)", y = "Depth (cm)", title = "Depositional Soil Sites") + panel_border() +
+  theme(legend.position = "right")
+ns_ggplot
+save_plot("ns_ggplot.png", ns_ggplot, base_height = 4, base_width = NULL, base_aspect_ratio = 1.5)
+```
+
+Saving just a copy of the two points
+```{r}
+date_point_ggplot <- plot_grid(ms_ggplot, ns_ggplot, labels = c("A.", "B."), nrow = 1, align = "h", rel_heights = c(1,1), rel_widths = c(12,12))
+date_point_ggplot
+save_plot("date_point.png", date_point_ggplot,ncol = 1, nrow = 2, base_aspect_ratio = 1.8, base_height = 4)
+```
+
+```{r}
+dates_ggplot <- plot_grid(ms_ggplot, ns_ggplot, density_facet_plot, NULL, labels = c("A.", "B.", "C."))
+dates_ggplot
+
+# trying to fix alignment issue
+# aligning top row (density plot) with bottom left (mineral soil)
+plots <- align_plots(ms_ggplot, density_facet_plot, align = "v", axis = "l")
+plots
+# build bottom row
+bottom_row <- plot_grid(plots[[1]], ns_ggplot, labels = c("B.", "C."), align = "h",axis = "b", rel_widths = c(1.5, 1.5))
+plot_grid(plots[[2]], bottom_row, labels = c("A.", ""), ncol = 1, rel_heights = c(1.2, 1.2), rel_widths = c(0.5,1))
+# nah I don't like how that looks
+
+bottom_row <- plot_grid(ms_ggplot, ns_ggplot, labels = c("B.", "C."), align = "h", rel_widths = c(1.5,1.5))
+date_facet_plot <- plot_grid(density_facet_plot, bottom_row, labels = c("A.", ""), ncol = 1, rel_heights = c(1.25, 1.5), rel_widths = c(0.95, 1))
+date_facet_plot
+# that's what I want but the y axis for the top and bottom aren't aligned...
+# OH WELL FOR NOW
+save_plot("date_facet_plot.png", date_facet_plot, nrow = 2, ncol = 2, base_aspect_ratio = 1.1)
+```
+
+Mmmm I think I'll try it with densities on the bottom, maybe the axes will align better in that position:
+```{r}
+# Switching order / fixing alignment issue
+# aligning top row (soils) with bottom left (densities)
+plots <- align_plots(ms_ggplot, density_facet_plot, align = "v", axis = "l")
+# build bottom row
+bottom_row <- plot_grid(plots[[1]], ns_ggplot, labels = c("B.", "C."), align = "h", axis = "b", rel_widths = c(1.5, 1.5))
+plot_grid(plots[[2]], bottom_row, labels = c("A.", ""), ncol = 1, rel_heights = c(1.2, 1.2))
+# nah I don't like how that looks
+```
+
+
+# Age Reversal
+I also need to re-create the age-reversal graph I drew up in excel. I'm guessing the geom_point function should help with the plotting issues I've had, but I need to figure out how to cross-index the data appropriately.
+I think if I start with each site_type category file, I can do them relatively quickly by hand and then add back together with an age_reversal / depth_reversal column for each. 
+#### 5/6/18 - 
+Just kidding, did it all in excel
+```{r}
+age_reverse <- read.csv('age_reverse.csv')
+
+site_labels <- c("Alluvial Fan", "Colluvial Hollow","Hillslope Mineral Soil", "Ridgetop Mineral Soil", "Valley Mineral Soil")
+site_colors <- c("#D55E00", "#009E73", "#202020", "#E69F00", "#56B4E9")
+site_fill <- c("#D55E0080", "#009E7380", "#20202080", "#E69F0080", "#56B4E980")
+  
+age_reverse_ggplot <- ggplot(age_reverse, aes(x = age_reverse$depth_reversal, y = age_reverse$age_reversal, color = age_reverse$site_type, shape = age_reverse$site_type, fill = age_reverse$site_type)) + 
+  geom_point(size = 4) + 
+  scale_shape_manual(values = c(21,22,21, 22, 24),
+                     name = "Site Type:",
+                     labels = site_labels) +
+  scale_color_manual(values = site_colors,
+                     name = "Site Type:",
+                     labels = site_labels) +
+  scale_fill_manual(values = site_fill, name = "Site Type:",
+                    labels = site_labels) +
+  geom_hline(yintercept = 0) +
+  background_grid( major = "xy") + panel_border() +
+  xlab("Difference in depth in soil (cm)") + ylab("Difference in age (cal yr BP)") + 
+  labs(title = "Age Reversal of Radiocarbon Dates") +
+  annotate("text", x = c(88,85), y = c(-3800,4225), label = c("Age Reversal", "No Age Reversal")) 
+age_reverse_ggplot
+save_plot("age_reverse.png", age_reverse_ggplot, base_aspect_ratio = 1.8, base_height = 4)
+```
+
+
+```{r}
+length(which(age_reverse$age_reversal < 0)) # age reversal
+length(which(age_reverse$age_reversal > 0)) # no age reversal
+
+```
+
+
+# Linear Regression
+Running a linear regression on age vs depth. 
+
+```{r}
+# running linear regression on MS dates
+linearmod <- lm(formula = ms_dates$depth ~ ms_dates$median_cal_age, data = ms_dates)
+print(linearmod)
+summary(linearmod)
+```
+
+```{r}
+plot(ms_dates$median_cal_age ~ ms_dates$depth, data = ms_dates)
+abline(linearmod)
+```
+
+# comparing against norman
+```{r}
+dates
+moderndates <- matrix(data = NA, ncol = 2, nrow = 6+length(norman))
+moderndates[1:6,1] <- rep("soil")
+moderndates[1:6,2] <- dates$median_cal_age[which(dates$median_cal_age <= 300)]
+norman <- c(1764, 1766, 1774, 1808, 1834, 1850, 1873, 1883, 1917, 1936)
+normanBP <- 2018 - norman
+moderndates[7:16,1] <- rep("norman")
+moderndates[7:16,2] <- normanBP
+
+moderndates <- as.data.frame(moderndates)
+colnames(moderndates) <- c("type", "date")
+moderndates$date <- as.numeric(as.character(moderndates$date))
+class(moderndates$date)
+
+# scale_y_continuous(NULL, breaks = NULL)
+
+overlap_ggplot <- ggplot(moderndates, aes(x = moderndates$date, color = moderndates$type, fill = moderndates$type)) +
+  geom_dotplot( dotsize = 1.5, stackdir = "center") +
+  scale_color_manual(values = c("#e34a33","#fdd0a2"),
+                    name = "Data Type", 
+                    labels = c("Tree-ring", "Soil") ) + 
+  scale_fill_manual(values = c("#e34a3380","#fdd0a280"),
+                    name = "Data Type", 
+                    labels = c("Tree-ring", "Soil") ) +  
+  scale_y_continuous(NULL, breaks = NULL) + 
+  background_grid() +  panel_border() + labs(x = "Years BP", title = "Overlap between Tree-ring records and Soil Charcoal")
+save_plot("overlap.png",overlap_ggplot, base_aspect_ratio = 1.8 )
+```
+
+
+
+
+
+

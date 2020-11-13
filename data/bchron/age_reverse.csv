@@ -1,0 +1,23 @@
+﻿site_type,site,site_id,sample_id,depth_reversal,age_reversal
+ridgetop mineral soil,WOMT,WOMT_01,WOMT-01d19,14,125
+ridgetop mineral soil,WOMT,WOMT_02,WOMT-02d15,13,-174
+ridgetop mineral soil,SALM,SALM_01,SALM-01d13,13,-253
+ridgetop mineral soil,SALM,SALM_03,SALM-03d22,19,-639
+ridgetop mineral soil,GOG,GOG_02,GOG-02d16,12,61
+ridgetop mineral soil,GOG,GOG_01,GOG-01d18,17,495
+ridgetop mineral soil,SCT,SCT_01,SCT-01d20,4,562
+alluvial fan,WORM,WORM_03,WORM-03d110,98,-173
+ridgetop mineral soil,RIDG,RIDG_02,RIDG-02d11,9,1451
+valley mineral soil,EELS,EELS_01,EELS-01d13,7,-285
+hillslope mineral soil,WOLF,WOLF_01,WOLF-01d16,11,-602
+ridgetop mineral soil,WOLF,WOLF_03,WOLF-03d45,35,-3614
+hillslope mineral soil,WORF,WORF_02,WORF-02d20,17,-166
+colluvial hollow,GOV,GOV_01,GOV-01d23,16,26
+colluvial hollow,GOV,GOV_01,GOV-01d31,8,4197
+colluvial hollow,GOV,GOV_01,GOV-01d31b,0,-551
+colluvial hollow,GOV,GOV_01,GOV-01d38,7,124
+colluvial hollow,GOV,GOV_01,GOV-01d50,12,-27
+colluvial hollow,GOV,GOV_01,GOV-01d50b,0,-79
+colluvial hollow,GOV,GOV_01,GOV-01d52,2,300
+colluvial hollow,GOV,GOV_01,GOV-01d52b,0,-300
+colluvial hollow,GOV,GOV_01,GOV-01d67,15,-1871

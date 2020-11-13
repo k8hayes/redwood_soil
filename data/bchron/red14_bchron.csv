@@ -1,0 +1,41 @@
+﻿site,site_name,type,site_type,sample_id,ages,SD,depth,med_Cal_age
+WOMT,WOMT_01,ms,ridgetop mineral soil,WOMT-01d5,480,30,15,520
+WOMT,WOMT_01,ms,ridgetop mineral soil,WOMT-01d19,680,40,19,645
+WOMT,WOMT_02,ms,ridgetop mineral soil,WOMT-02d2,575,30,2,603
+WOMT,WOMT_02,ms,ridgetop mineral soil,WOMT-02d15,365,30,15,429
+SALM,SALM_01,ms,ridgetop mineral soil,SALM-01d0,365,30,0,429
+SALM,SALM_01,ms,ridgetop mineral soil,SALM-01d13,175,40,13,176
+SALM,SALM_03,ms,ridgetop mineral soil,SALM-03d3,840,30,3,747
+SALM,SALM_03,ms,ridgetop mineral soil,SALM-03d22,90,30,22,108
+GOG,GOG_01,ms,ridgetop mineral soil,GOG-01d18,445,30,18,507
+GOG,GOG_02,ms,ridgetop mineral soil,GOG-02d4,90,30,4,108
+GOG,GOG_02,ms,ridgetop mineral soil,GOG-02d16,155,35,16,169
+GOV,GOV_01,dep,colluvial hollow,GOV-01d17,1010,35,17,931
+GOV,GOV_01,dep,colluvial hollow,GOV-01d23,1050,30,23,957
+GOV,GOV_01,dep,colluvial hollow,GOV-01d31,4095,30,31,5154
+GOV,GOV_01,dep,colluvial hollow,GOV-01d31b,4490,60,31,4603
+GOV,GOV_01,dep,colluvial hollow,GOV-01d38,4185,30,38,4727
+GOV,GOV_01,dep,colluvial hollow,GOV-01d50,4075,30,50,4700
+GOV,GOV_01,dep,colluvial hollow,GOV-01d50b,4155,30,50,4621
+GOV,GOV_01,dep,colluvial hollow,GOV-01d52,4105,30,52,4921
+GOV,GOV_01,dep,colluvial hollow,GOV-01d52b,4355,35,52,4621
+GOV,GOV_01,dep,colluvial hollow,GOV-01d67,2615,40,67,2750
+SCT,SCT_01,ms,ridgetop mineral soil,SCT-01d16,680,30,16,652
+SCT,SCT_01,ms,ridgetop mineral soil,SCT-01d20,1255,30,20,1214
+WORM,WORM_01,ms,ridgetop mineral soil,WORM-01d11,2285,35,11,2315
+WORM,WORM_03,dep,alluvial fan,WORM-03d12,6000,30,12,6839
+WORM,WORM_03,dep,alluvial fan,WORM-03d110,5845,30,110,6666
+RIDG,RIDG_02,ms,ridgetop mineral soil,RIDG-02d2,875,30,2,781
+RIDG,RIDG_02,ms,ridgetop mineral soil,RIDG-02d11,2245,35,11,2232
+RIDG,RIDG_01,ms,ridgetop mineral soil,RIDG-01d19,830,30,19,737
+EELS,EELS_01,ms,valley mineral soil,EELS-01d6,305,30,6,388
+EELS,EELS_01,ms,valley mineral soil,EELS-01d13,75,30,13,103
+WOLF,WOLF_01,ms,hillslope mineral soil,WOLF-01d5,580,30,5,604
+WOLF,WOLF_02,ms,hillslope mineral soil,WOLF-02d3,1420,35,3,1324
+WOLF,WOLF_03,ms,ridgetop mineral soil,WOLF-03d10,3615,30,10,3924
+WOLF,WOLF_03,ms,ridgetop mineral soil,WOLF-03d45,265,30,45,310
+WOLF,WOLF_04,ms,ridgetop mineral soil,WOLF-04d10,420,30,10,491
+WORF,WORF_02,ms,hillslope mineral soil,WORF-02d3,1155,30,3,1070
+WORF,WORF_02,ms,hillslope mineral soil,WORF-02d20,985,30,20,904
+WORF,WORF_03,ms,ridgetop mineral soil,WORF-03d8,3805,30,8,4193
+WORF,WORF_05,ms,ridgetop mineral soil,WORF-05d7,200,30,7,180

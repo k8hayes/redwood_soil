@@ -1,6 +1,8 @@
 ---
 title: "Costech"
 output: html_notebook
+editor_options: 
+  chunk_output_type: inline
 ---
 # Working with elemental analysis data
 ### 5/8/18 - 

@@ -15,6 +15,7 @@ library(ggplot2)
 library(here)
 library(cowplot)
 theme_set(theme_cowplot())
+git_vaccinate()
 ```
 
 Calibrating radiocabon dates

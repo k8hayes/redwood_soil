@@ -17,7 +17,8 @@ ggplot(char_comparison, aes(x = depth_category, y = mgC_g, fill = type)) +
   geom_boxplot()  +
   scale_fill_manual(name = "Method", 
                     values = c("#dfc27d", "#018571"),
-                    labels = c("Chemical", "Physical")) + 
+                    labels = c("Digestion", "Physical")) + 
   labs(x = "Depth (cm)", y = "Charcoal Concentration (mg/g)", title = "Comparing methods of charcoal quantification") + 
   scale_x_discrete(labels = c("0-5", "5-10", "10-15", "15-20", "20-25", "25-30", "30-35"))
 
+# export as "FigS2_method.png" # 630 by 372

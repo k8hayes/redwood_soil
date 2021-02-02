@@ -5,11 +5,9 @@ editor_options:
   chunk_output_type: inline
 ---
 ```{r setting_up, include=FALSE}
-getwd()
-# setwd("/Users/katherinehayes/Desktop/Thesis/Data")
 library(ggplot2)
-library(knitr)
-library(plyr) 
+library(tidyverse)
+library(here)
 knitr::opts_chunk$set(error = TRUE)
 # rmarkdown::render(input = "charcoal_concentrations.Rmd", output_format = "html_document")
 ```
@@ -30,9 +28,10 @@ I've been updating the figures and analysis as he works. The data in this docume
 
 Here's what all that data looks like:
 ```{r char_mass, echo=TRUE}
-char_mass <- read.csv("char_mass_sieve.csv")
+char_mass <- read.csv(here("Data/char_mass_sieve.csv"))
 char_mass
 ```
+
 ### Column names
 "Site_id" is the site name, "sample_id" is the depth category, "depth..mm." is the depth in mm (the csv file makes the parentheses weird once you load it as a data frame), "mass...2.mm." is the mass of charcoal over 2mm in diameter and "mass....0.5.mm." is the mass of charcoal between 2 and 0.5 mm in diameter. 
 
@@ -46,11 +45,11 @@ Before I start working this file, I want to fix/change a few things:
  
 ##### 5/5/18 12:45 pm 
  - I do still think it makes sense to change the 2mm NAs to zero, since the NAs in that case mean there wasn't chacoal     at that size class, but I'm going to go back to not changing the 0.5mm NAs to zero. Kergis still has 2-3 >0.5 mm    samples to count, so leaving the NAs should reflect that those samples have to be counted still. It also should clean up the NAs I'm seeing in charcoal concentration down the road. 
-  - I'm also going to calculate total mass in R, rather than doing it in the excel file. That doesn't seem to be dynamic     enough. Changing that now. 
+  - I'm also going to calculate total mass in R, rather than doing it in the excel file. That doesn't seem to be dynamic enough. Changing that now. 
 
-```{r}
+```{r clean up}
 # changing NAs to zero
-  char_mass$mass...2.mm.[which(is.na(char_mass$mass...2.mm.))] <- 0
+  # char_mass$mass...2.mm.[which(is.na(char_mass$mass...2.mm.))] <- 0
   # doing the same with the >0.5 
   # actually nope, see note in text above # leaving the code just in case
   # char_mass$mass....0.5.mm.[which(is.na(char_mass$mass....0.5.mm.))] <- 0
@@ -68,10 +67,10 @@ names(char_mass)
     # this is how to do one at a time
       # colnames(char_mass)[colnames(char_mass) == "mass...2.mm."] <- "mass_2" 
     # or all at once:
-      names(char_mass) <- c("site_id", "sample_id", "depth", "dry_weight", "mass_2", "mass_0.5")
+     # names(char_mass) <- c("site_id", "sample_id", "depth", "dry_weight", "mass_2", "mass_0.5")
 
 # Finally, let's caculate total charcoal mass from the two size classes of charcoal counts
-  char_mass$total_mass_g <- mass_2 + mass_0.5 # i'll eventually change this into mg to get charcoal concentration, but doing it in g for now
+ # char_mass$total_mass_g <- mass_2 + mass_0.5 # i'll eventually change this into mg to get charcoal concentration, but doing it in g for now
 ```
 
 ## Bulk Density
@@ -82,17 +81,28 @@ The height and diameter of the soil rings we used is both 5 cm, so the volume of
 I'll be using the dry soil weight from the KMD data, since the sieved samples were never dried out before sieving. Not ideal, since recovery wasn't identical at every site, but it's what we have. I expect it will mostly be an issue for A and G depth categories (0-50 mm and 300-350 mm respectively), those samples were the ones that differed the most. The A samples tended to be duff: the amount of that material differed at each site and with each sample to begin with, and occassionally compressed within the sampler during recovery. G samples were the samples at the very bottom of the corer: they weren't recovered within a ring, so their volume may be slighly different, and if soils were dense enough or had enough clay, it seemed like the sample would split at something like a root, leaving soil behind at the bottom of the core in the ground. 
 
 ```{r bulk_density, echo=TRUE}
-names(char_mass) # note: check names(char_mass) to make sure code is carrying through to next chunk (5/5/18)
-attach(char_mass)
-
 # calculating the volume of the soil rings used
 ring_volume <- pi * 2.5^2 * 5 # 98.17477
 
 # adding column to char_mass for bulk density
-char_mass$bulk_density <- (dry_weight/ring_volume) # if this isn't working, check if you've attached char_mass again
+char_mass$bulk_density <- char_mass$kmd_dry_weight/ring_volume 
 
+# changing depth to cm
+char_mass$depth[char_mass$depth_category == "A"] <- "0-5"
+char_mass$depth[char_mass$depth_category == "B"] <- "5-10"
+char_mass$depth[char_mass$depth_category == "C"] <- "10-15"
+char_mass$depth[char_mass$depth_category == "D"] <- "15-20"
+char_mass$depth[char_mass$depth_category == "E"] <- "20-25"
+char_mass$depth[char_mass$depth_category == "F"] <- "25-30"
+char_mass$depth[char_mass$depth_category == "G"] <- "30+"
+
+# attaching order to depth
+char_mass$depth <- factor(depth, levels = c("0-5", "5-10", "10-15",
+                                            "15-20", "20-25", "25-30", "30+"))
 # exploring relationship between bulk density and depth
-ggplot(char_mass) + geom_boxplot(aes(char_mass$sample_id, char_mass$bulk_density), fill = "grey") + labs(x = "Depth category", y = "Bulk Density (grams per cubic centimeter)", title = "Bulk Density across depth")
+ggplot(char_mass) + geom_boxplot(aes(depth, bulk_density), fill = "grey") + 
+  labs(x = "Depth (cm)", y = "Bulk Density (grams per cubic centimeter)",
+       title = "Bulk Density across depth")
   # i like how this looks 
 ```
 

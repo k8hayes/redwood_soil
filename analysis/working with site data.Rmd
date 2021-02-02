@@ -1,11 +1,10 @@
 ---
 title: "Working with Site data"
 output: html_notebook
-editor_options: 
-  chunk_output_type: inline
 ---
 ```{r}
 library(ggplot2)
+install.packages("tidyverse")
 library(tidyverse)
 ```
 
@@ -23,8 +22,10 @@ His notes:
 - Since so many sites are on ridges or flat areas, aspect values are not so meaningful, and the sun value is close to 1. 
 
 ```{r intro}
+# setting up workspace 
+setwd(dir = "Desktop/Thesis/Data/")
 char_mass <- read.csv(file = "char_mass_sieve.csv") # mass results from sieving (still in progress 4/15)
-site_data <- read.csv(here("Data/char_sites.csv")) # site attributes
+site_data <- read.csv(file = "char_sites.csv") # site attributes
 
 ```
 
@@ -128,4 +129,3 @@ plot(bulk_site_data$elevation, site_char$site_sums)
 plot(bulk_site_data$slope, site_char$site_sums)
 plot(bulk_site_data$pcurv, site_char$site_sums)
 ```
-

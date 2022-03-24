@@ -13,7 +13,7 @@ It looks like Leo's calculated mass of C in the mg_Carbon column: the excel file
 ### 5/12/18 - entering last tray of data
 
 ```{r}
-library(ggplot2)
+library(tidyverse)
 library(cowplot)
 
 setwd("Desktop/Thesis/Data/costech/")

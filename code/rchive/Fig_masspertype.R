@@ -1,8 +1,8 @@
 # figure of PyC mass according to site type
-library(ggplot2)
-library(cowplot) | theme_set(theme_cowplot())
-library(here)
 library(tidyverse)
+library(cowplot) 
+theme_set(theme_cowplot())
+library(here)
 
 gm2 <- read.csv(here("Data/gm2all.csv"))
 

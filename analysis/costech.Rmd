@@ -15,9 +15,10 @@ It looks like Leo's calculated mass of C in the mg_Carbon column: the excel file
 ```{r}
 library(tidyverse)
 library(cowplot)
+theme_set(theme_cowplot())
 
-setwd("Desktop/Thesis/Data/costech/")
-costech_results <- read.csv("costech_results.csv")
+dataloc = "C:/Users/khayes23/Documents/Research/R20 Repositories/R200 Active/redwood_soil/data/"
+costech_results <- read.csv(paste0(dataloc, "costech_results.csv"))
 costech_results
 
 names(costech_results)
@@ -70,16 +71,16 @@ sites[which(sites$type == "raw"),]$mgC_g <- raw_samples$mgC_g
 
 First plot of all data according to site:
 ```{r}
-# site_ggplot <- ggplot(sites, aes(x = sites$site_id, y = sites$mgC_g, fill = sites$type)) + 
+ site_ggplot <- ggplot(sites, aes(x = site_id, y = mgC_g, fill = type)) + 
   geom_boxplot() + 
-  facet_wrap(~sites$site_id, scales = "free_x") +
+  facet_wrap(~site_id, scales = "free_x") +
   background_grid() + panel_border() +
   scale_fill_manual(name = "Site Type",
                     values = ,
                     labels = c("kmd", "raw")) +
   labs(x = "", y = "C levels (mg)", title = "C across sites") +
   theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
-# site_ggplot
+ site_ggplot
 # save_plot("sites.png", site_ggplot, base_aspect_ratio = 1.8)
 
 # what about:
@@ -108,19 +109,23 @@ ggplot(h_r_ms, aes(x = h_r_ms$depth_category, y = h_r_ms$mgC_g, fill = h_r_ms$ty
 
 There should only be one value for each depth category at each site, so I won't be able to do boxplots for each. To get boxplots at each depth I'll have to do this:
 ```{r}
-depth_ggplot <- ggplot(sites, aes(x = sites$depth_category, y = sites$mgC_g, fill = sites$type)) +
+depth_ggplot <- sites %>%
+  filter(depth_category != "G") %>%
+  ggplot(aes(x = depth_category, y = mgC_g, fill = type)) +
   geom_boxplot() + background_grid() + panel_border() +
   labs(x = "Depth (cm)", y = "mg of C / g of soil", title = "Difference in C across depth") +
   scale_fill_discrete(name = "",
                       labels =  c("Pyrogenic Carbon", "Total Soil carbon")) +
-  scale_x_discrete(labels = c("0-5", "5-10", "10-15", "15-20", "20-25", "25-30", "30-35"))
+  scale_x_discrete(labels = c("0-5", "5-10", "10-15", "15-20", "20-25", "25-30"))
 depth_ggplot
 save_plot("depth.png", depth_ggplot, base_aspect_ratio = 1.8)
 
 # just the total carbon
-total_c_ggplot <- ggplot(raw_samples, aes(x = raw_samples$depth_category, y = raw_samples$mgC_g)) +
+total_c_ggplot <- raw_samples %>%
+  filter(depth_category != "G") %>%
+  ggplot(aes(x = depth_category, y = mgC_g)) +
   geom_boxplot(fill = "#1c9099") + background_grid() + panel_border() +
-  labs(x = "Depth (cm)", y = "Milligrams of C per g of soil", title = "Difference in total C across depth") + scale_x_discrete(labels = c("0-5", "5-10", "10-15", "15-20", "20-25", "25-30", "30-35"))
+  labs(x = "Depth (cm)", y = "Milligrams of C per g of soil", title = "Difference in total C across depth") + scale_x_discrete(labels = c("0-5", "5-10", "10-15", "15-20", "20-25", "25-30"))
 total_c_ggplot
 save_plot("total_c_ggplot.png", total_c_ggplot, base_aspect_ratio = 1.25)
 ```
@@ -147,29 +152,25 @@ save_plot("total_c_ggplot.png", total_c_ggplot, base_aspect_ratio = 1.25)
 
 Doing this in excel
 ```{r}
-ratios <- read.csv("ratios.csv")
+ratios <- read.csv(paste0(dataloc, "ratios.csv"))
 names(ratios)
 ratios$percent <- ratios$ratio.of.pyc_total*100
 # getting rid of zeros # 5/12 - shouldn't have to do this now
 # ratios <- ratios[-which(ratios$ratio.of.pyc_total == 0),]
 
 
-ratio_pyc_mean <- tapply(ratios$ratio.of.pyc_total, ratios$depth_category, mean)
+ratio_pyc_mean <- tapply(ratio.of.pyc_total, depth_category, mean)
 mean(ratio_pyc_mean)
-ratio_ggplot <- ggplot(ratios, aes(x = ratios$depth_category, y = ratios$ratio.of.pyc_total)) +
+ratio_ggplot <- ratios %>%
+  filter(depth_category != "G") %>%
+   ggplot( aes(x = depth_category, y = ratio.of.pyc_total)) +
   geom_boxplot(fill = "#d95f0e") +
   background_grid() + panel_border() +
   labs(x = "Depth (cm)", y = "Ratio", title = "Ratio of Pyrogenic C to Total C") + 
-  scale_x_discrete(labels = c("0-5", "5-10", "10-15", "15-20", "20-25", "25-30", "30-35"))
+  scale_x_discrete(labels = c("0-5", "5-10", "10-15", "15-20", "20-25", "25-30"))
 ratio_ggplot
 save_plot("ratio_ggplot.png", ratio_ggplot,base_aspect_ratio = 1.25) 
 
-percent_ggplot <- ggplot(ratios, aes(x = ratios$depth_category, y = ratios$percent)) +
-  geom_boxplot( fill = "#d95f0e") +
-  background_grid() + panel_border() +
-  labs(x = "Depth (cm)", y = "Percent", title = "Percent Pyrogenic charcoal") + 
-  scale_x_discrete(labels = c("0-5", "5-10", "10-15", "15-20", "20-25", "25-30", "30-35"))
-save_plot("percent_ggplot.png", percent_ggplot, base_aspect_ratio = 1.25)
 ```
 
 By site attributes:

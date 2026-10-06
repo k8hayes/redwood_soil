@@ -1,7 +1,3 @@
-library(tidyverse)
-library(cowplot) 
-theme_set(theme_cowplot())
-library(here)
 
 costech <- read.csv("data/costech_results.csv")
 

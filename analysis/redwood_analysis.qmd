@@ -1,0 +1,42 @@
+---
+title: "redwood_analysis"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+```{r}
+#| label: set-up
+
+
+
+```
+
+```{r}
+#| label: load-lib
+
+source(here::here("code", "00_load-lib.R"))
+```
+
+```{r}
+#| label: process-costech
+
+source(here::here("code", "01_process-costech.R"))
+```
+
+# Figures
+
+```{r}
+#| label: Fig-2. Carbon ratio
+
+source(here::here("code", "Fig2_carbonratio.R"))
+```
+
+```{r}
+#| label: Fig-S1. Bulk density
+
+source(here::here("code", "FigS1_bulkdensity.R"))
+```

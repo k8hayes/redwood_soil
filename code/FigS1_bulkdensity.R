@@ -1,11 +1,15 @@
+## --------------------------------------------------------------- ##
+## Redwood Charcoal Analysis
+##
+## S1 - Bulk density
+## --------------------------------------------------------------- ##
+# Code written by: Kate Hayes (khayes23@alaska.edu)
+# Fall 2026
+
 # script for producing bulk density graph
 # appendix 1: figure s1
-library(tidyverse)
-library(here)
-library(cowplot)
-theme_set(theme_cowplot())
 
-char_mass <- read.csv(here("Data/char_mass_sieve.csv"))
+char_mass <- read.csv(here("data/char_mass_sieve.csv"))
 
 # calculating the volume of the soil rings used
 ring_volume <- pi * 2.5^2 * 5 # 98.17477 cm
@@ -29,10 +33,12 @@ char_mass <- char_mass %>%
   filter(depth != "30-35")
 
 # exploring relationship between bulk density and depth
-ggplot(char_mass) + geom_boxplot(aes(depth, bulk_density), fill = "grey") + 
+bd_plot = ggplot(char_mass) + geom_boxplot(aes(depth, bulk_den), fill = "grey") + 
   labs(x = "Depth (cm)", y = "Bulk Density (Grams per cm3)",
        title = "Bulk Density across Depth") + 
   background_grid() + panel_border()
 
 # save as "FigS1_bulkdensity.png" # 450 x 400
+save_plot("output/figures/FigS1_bulkdensity.png", bd_plot, nrow = 1, ncol = 1)
+
 

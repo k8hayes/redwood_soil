@@ -1,4 +1,11 @@
-# age-depth plot 
+## --------------------------------------------------------------- ##
+## Redwood Charcoal Analysis
+##
+## Fig. 3 - Age depth relationships
+## --------------------------------------------------------------- ##
+# Code written by: Kate Hayes (hayesk7@wwu.edu)
+# Fall 2026
+
 # figure 3A 
 
 dates <- read.csv(here("data/dates.csv"))

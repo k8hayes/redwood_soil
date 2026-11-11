@@ -18,7 +18,9 @@ credible_mass     <- 0.954  # 2 sigma, to match the earlier CALIB output
 collection_year   <- 2016   # latest possible year for a "modern" date
 flag_shift_years  <- 25     # flag old-vs-new median shifts larger than this
 
-dir.create(here::here("output/tables"), showWarnings = FALSE)
+# Output folders are created if they do not exist yet.
+dir.create(here::here("data/processed"), showWarnings = FALSE)
+dir.create(here::here("output/tables"), recursive = TRUE, showWarnings = FALSE)
 
 # Read and check the master table ###############################
 dates_raw <- read.csv(here::here("data/raw/radiocarbon_dates.csv"),

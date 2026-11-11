@@ -1,0 +1,43 @@
+"cams_id","site_id","site_type","depth_cm","c14_age","c14_error","f14c","f14c_error","use_in_analysis","exclusion_reason","source","note","is_modern","cal_bp_youngest","cal_bp_oldest","cal_bp_median","n_ranges"
+177578,"EELS_01","valley mineral soil",6,305,30,0.9625,0.0034,TRUE,"","CAMS report 2017-09-12","",FALSE,297,458,388,2
+177579,"EELS_01","valley mineral soil",13,75,30,0.9906,0.0035,TRUE,"","CAMS report 2017-09-12","",FALSE,31,258,117,2
+177460,"GOG_01","ridgetop mineral soil",1,NA,NA,NA,NA,TRUE,"","Table 1 of manuscript and c14 samples workbook (no CAMS report in repository)","Reported as >Modern. Earlier OxCal result recorded in the sample workbook: 1994-1998 CE.",TRUE,-66,0,NA,NA
+177461,"GOG_01","ridgetop mineral soil",18,445,30,NA,NA,TRUE,"","data/c14inp.csv (no CAMS report in repository)","",FALSE,344,531,504,2
+177462,"GOG_02","ridgetop mineral soil",4,90,30,NA,NA,TRUE,"","data/c14inp.csv (no CAMS report in repository)","",FALSE,25,262,114,2
+177463,"GOG_02","ridgetop mineral soil",16,155,35,NA,NA,TRUE,"","data/c14inp.csv (no CAMS report in repository)","",FALSE,0,285,149,6
+175998,"GOV_01","colluvial hollow",17,1010,35,0.8818,0.0035,TRUE,"","CAMS report 2016-11-08","Depth is 17 cm in the CAMS report and sample workbook but 7 cm in dates.csv and c14inp.csv; CAMS report used.",FALSE,794,972,921,3
+177582,"GOV_01","colluvial hollow",23,1050,30,0.8777,0.0031,TRUE,"","CAMS report 2017-09-12","",FALSE,917,1053,949,2
+177078,"GOV_01","colluvial hollow",31,4490,60,0.5717,0.0039,TRUE,"","CAMS report 2017-06-19","",FALSE,4885,5314,5142,3
+177583,"GOV_01","colluvial hollow",31,4095,30,0.6005,0.002,TRUE,"","CAMS report 2017-09-12","",FALSE,4447,4811,4603,4
+177079,"GOV_01","colluvial hollow",38,4185,30,0.5938,0.0021,TRUE,"","CAMS report 2017-06-19","",FALSE,4586,4837,4724,3
+177080,"GOV_01","colluvial hollow",50,4155,30,0.596,0.002,TRUE,"","CAMS report 2017-06-19","",FALSE,4579,4825,4699,1
+177584,"GOV_01","colluvial hollow",50,4075,30,0.602,0.0022,TRUE,"","CAMS report 2017-09-12","",FALSE,4441,4802,4563,4
+177081,"GOV_01","colluvial hollow",52,4355,35,0.5814,0.0025,TRUE,"","CAMS report 2017-06-19","",FALSE,4847,5036,4921,2
+177585,"GOV_01","colluvial hollow",52,4105,30,0.5997,0.002,TRUE,"","CAMS report 2017-09-12","",FALSE,4452,4814,4620,4
+175999,"GOV_01","colluvial hollow",67,2615,40,0.7221,0.0032,TRUE,"","CAMS report 2016-11-08","",FALSE,2542,2846,2745,5
+177577,"RIDG_01","ridgetop mineral soil",19,830,30,0.9019,0.0032,TRUE,"","CAMS report 2017-09-12","",FALSE,683,783,726,1
+177465,"RIDG_02","ridgetop mineral soil",2,875,30,NA,NA,TRUE,"","data/c14inp.csv (no CAMS report in repository)","",FALSE,692,902,768,5
+177457,"RIDG_02","ridgetop mineral soil",11,2245,35,NA,NA,TRUE,"","data/c14inp.csv (no CAMS report in repository)","",FALSE,2151,2341,2228,2
+177458,"SALM_01","ridgetop mineral soil",0,365,30,NA,NA,TRUE,"","data/c14inp.csv (no CAMS report in repository)","",FALSE,316,496,422,3
+177459,"SALM_01","ridgetop mineral soil",13,175,40,NA,NA,TRUE,"","data/c14inp.csv (no CAMS report in repository)","",FALSE,0,296,171,4
+177580,"SALM_03","ridgetop mineral soil",3,840,30,0.9009,0.0033,TRUE,"","CAMS report 2017-09-12","",FALSE,684,787,736,1
+177581,"SALM_03","ridgetop mineral soil",22,90,30,0.9888,0.0031,TRUE,"","CAMS report 2017-09-12","",FALSE,25,262,114,2
+177082,"SCT_01","ridgetop mineral soil",16,680,30,0.9186,0.0033,TRUE,"","CAMS report 2017-06-19","",FALSE,561,673,647,2
+177083,"SCT_01","ridgetop mineral soil",20,1255,30,0.8551,0.0031,TRUE,"","CAMS report 2017-06-19","",FALSE,1075,1279,1214,3
+177586,"WOLF_01","hillslope mineral soil",5,580,30,0.9304,0.003,TRUE,"","CAMS report 2017-09-12","",FALSE,531,645,602,2
+177587,"WOLF_01","hillslope mineral soil",16,NA,NA,1.0316,0.0037,TRUE,"","CAMS report 2017-09-12","Reported as >modern.",TRUE,-66,0,NA,NA
+177588,"WOLF_02","hillslope mineral soil",3,1420,35,0.8379,0.0032,TRUE,"","CAMS report 2017-09-12","",FALSE,1288,1368,1325,1
+177589,"WOLF_03","ridgetop mineral soil",10,3615,30,0.6376,0.0023,TRUE,"","CAMS report 2017-09-12","",FALSE,3838,4067,3923,2
+177590,"WOLF_03","ridgetop mineral soil",45,265,30,0.9674,0.0034,TRUE,"","CAMS report 2017-09-12","",FALSE,0,439,310,4
+177591,"WOLF_04","ridgetop mineral soil",10,420,30,0.9493,0.0034,TRUE,"","CAMS report 2017-09-12","",FALSE,332,523,488,2
+177453,"WOMT_01","ridgetop mineral soil",5,480,30,NA,NA,TRUE,"","data/c14inp.csv (no CAMS report in repository)","",FALSE,496,542,518,1
+177454,"WOMT_01","ridgetop mineral soil",19,680,40,NA,NA,TRUE,"","data/c14inp.csv (no CAMS report in repository)","",FALSE,556,681,639,2
+177455,"WOMT_02","ridgetop mineral soil",2,575,30,NA,NA,TRUE,"","data/c14inp.csv (no CAMS report in repository)","",FALSE,529,644,601,2
+177456,"WOMT_02","ridgetop mineral soil",15,365,30,NA,NA,TRUE,"","data/c14inp.csv (no CAMS report in repository)","",FALSE,316,496,422,3
+177592,"WORF_02","hillslope mineral soil",3,1155,30,0.866,0.0031,TRUE,"","CAMS report 2017-09-12","",FALSE,961,1175,1059,4
+177593,"WORF_02","hillslope mineral soil",20,985,30,0.8848,0.0032,TRUE,"","CAMS report 2017-09-12","",FALSE,794,955,862,3
+177594,"WORF_03","ridgetop mineral soil",8,3805,30,0.6227,0.0022,TRUE,"","CAMS report 2017-09-12","",FALSE,4089,4345,4192,2
+177595,"WORF_05","ridgetop mineral soil",7,200,30,0.9752,0.0035,TRUE,"","CAMS report 2017-09-12","",FALSE,0,306,182,5
+177084,"WORM_01","ridgetop mineral soil",11,2285,35,0.7527,0.0032,TRUE,"","CAMS report 2017-06-19","",FALSE,2157,2351,2304,2
+175996,"WORM_03","alluvial fan",12,6000,30,0.4738,0.0017,TRUE,"","CAMS report 2016-11-08","",FALSE,6747,6936,6837,3
+175997,"WORM_03","alluvial fan",110,5845,30,0.483,0.0018,TRUE,"","CAMS report 2016-11-08","",FALSE,6561,6741,6663,2

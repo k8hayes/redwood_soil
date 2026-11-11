@@ -1,0 +1,43 @@
+"site_id","site_type","cams_id","depth_cm","c14_age","c14_error","cal_bp_2sigma_range","cal_bp_median"
+"EELS_01","valley mineral soil",177578,6,"305",30,"297-458",388
+"EELS_01","valley mineral soil",177579,13,"75",30,"31-258",117
+"GOG_01","ridgetop mineral soil",177460,1,">Modern",,"post-1950",
+"GOG_01","ridgetop mineral soil",177461,18,"445",30,"344-531",504
+"GOG_02","ridgetop mineral soil",177462,4,"90",30,"25-262",114
+"GOG_02","ridgetop mineral soil",177463,16,"155",35,"0-285",149
+"GOV_01","colluvial hollow",175998,17,"1010",35,"794-972",921
+"GOV_01","colluvial hollow",177582,23,"1050",30,"917-1053",949
+"GOV_01","colluvial hollow",177078,31,"4490",60,"4885-5314",5142
+"GOV_01","colluvial hollow",177583,31,"4095",30,"4447-4811",4603
+"GOV_01","colluvial hollow",177079,38,"4185",30,"4586-4837",4724
+"GOV_01","colluvial hollow",177080,50,"4155",30,"4579-4825",4699
+"GOV_01","colluvial hollow",177584,50,"4075",30,"4441-4802",4563
+"GOV_01","colluvial hollow",177081,52,"4355",35,"4847-5036",4921
+"GOV_01","colluvial hollow",177585,52,"4105",30,"4452-4814",4620
+"GOV_01","colluvial hollow",175999,67,"2615",40,"2542-2846",2745
+"RIDG_01","ridgetop mineral soil",177577,19,"830",30,"683-783",726
+"RIDG_02","ridgetop mineral soil",177465,2,"875",30,"692-902",768
+"RIDG_02","ridgetop mineral soil",177457,11,"2245",35,"2151-2341",2228
+"SALM_01","ridgetop mineral soil",177458,0,"365",30,"316-496",422
+"SALM_01","ridgetop mineral soil",177459,13,"175",40,"0-296",171
+"SALM_03","ridgetop mineral soil",177580,3,"840",30,"684-787",736
+"SALM_03","ridgetop mineral soil",177581,22,"90",30,"25-262",114
+"SCT_01","ridgetop mineral soil",177082,16,"680",30,"561-673",647
+"SCT_01","ridgetop mineral soil",177083,20,"1255",30,"1075-1279",1214
+"WOLF_01","hillslope mineral soil",177586,5,"580",30,"531-645",602
+"WOLF_01","hillslope mineral soil",177587,16,">Modern",,"post-1950",
+"WOLF_02","hillslope mineral soil",177588,3,"1420",35,"1288-1368",1325
+"WOLF_03","ridgetop mineral soil",177589,10,"3615",30,"3838-4067",3923
+"WOLF_03","ridgetop mineral soil",177590,45,"265",30,"0-439",310
+"WOLF_04","ridgetop mineral soil",177591,10,"420",30,"332-523",488
+"WOMT_01","ridgetop mineral soil",177453,5,"480",30,"496-542",518
+"WOMT_01","ridgetop mineral soil",177454,19,"680",40,"556-681",639
+"WOMT_02","ridgetop mineral soil",177455,2,"575",30,"529-644",601
+"WOMT_02","ridgetop mineral soil",177456,15,"365",30,"316-496",422
+"WORF_02","hillslope mineral soil",177592,3,"1155",30,"961-1175",1059
+"WORF_02","hillslope mineral soil",177593,20,"985",30,"794-955",862
+"WORF_03","ridgetop mineral soil",177594,8,"3805",30,"4089-4345",4192
+"WORF_05","ridgetop mineral soil",177595,7,"200",30,"0-306",182
+"WORM_01","ridgetop mineral soil",177084,11,"2285",35,"2157-2351",2304
+"WORM_03","alluvial fan",175996,12,"6000",30,"6747-6936",6837
+"WORM_03","alluvial fan",175997,110,"5845",30,"6561-6741",6663

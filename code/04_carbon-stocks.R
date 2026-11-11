@@ -24,7 +24,9 @@ add_subsample_mass <- TRUE
 
 core_area_cm2 <- pi * (core_diameter_cm / 2)^2
 
-dir.create(here::here("output/tables"), showWarnings = FALSE)
+# Output folders are created if they do not exist yet.
+dir.create(here::here("data/processed"), showWarnings = FALSE)
+dir.create(here::here("output/tables"), recursive = TRUE, showWarnings = FALSE)
 
 # Elemental results ###############################
 # type "raw" = undigested soil, type "kmd" = residue after acid-peroxide

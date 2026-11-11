@@ -70,6 +70,7 @@ message("Share of binned summed probability at or after 1000 cal BP: ",
         round(share_last_1000 * 100), "%")
 
 # Figure ###############################
+dir.create(here::here("output/figures"), recursive = TRUE, showWarnings = FALSE)
 spd_plot <- ggplot2::ggplot(summed, ggplot2::aes(x = cal_bp)) +
   ggplot2::geom_area(ggplot2::aes(y = density_binned_by_site),
                      fill = "grey70") +

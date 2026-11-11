@@ -6,8 +6,8 @@
 # Code written by: Kate Hayes (khayes23@alaska.edu)
 # Fall 2026
 
-# Load libraries 
+# Load libraries
 librarian::shelf(tidyverse, cowplot, terra,
-                 tidyterra) #, update_all= TRUE) 
+                 tidyterra, here, rcarbon) #, update_all= TRUE)
 
 theme_set(theme_cowplot())

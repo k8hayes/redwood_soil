@@ -1,0 +1,27 @@
+site_id,location,site_type,latitude,longitude,elevation_m,year_sampled,dated,cored
+EELS_01,Elk River,valley mineral soil,40.636283,-124.030983,358,2017,TRUE,TRUE
+GOG_01,Governor's Grove,ridgetop mineral soil,40.619533,-124.08075,512,2017,TRUE,TRUE
+GOG_02,Governor's Grove,ridgetop mineral soil,40.619117,-124.08035,523,2017,TRUE,TRUE
+GOV_01,Governor's Grove,colluvial hollow,40.61842,-124.08123,488,2016,TRUE,FALSE
+GOV_02,Governor's Grove,hillslope mineral soil,40.62003,-124.08127,501,2016,FALSE,FALSE
+GOV_03,Governor's Grove,hillslope mineral soil,40.6204,-124.08135,482,2016,FALSE,FALSE
+RIDG_01,Ridge Trail,ridgetop mineral soil,40.634117,-124.03485,401,2017,TRUE,TRUE
+RIDG_02,Ridge Trail,ridgetop mineral soil,40.634817,-124.034333,383,2017,TRUE,TRUE
+SALM_01,Salmon Creek Trail,ridgetop mineral soil,40.627983,-124.092083,503,2017,TRUE,TRUE
+SALM_02,Salmon Creek Trail,hillslope mineral soil,40.628367,-124.093383,493,2017,FALSE,TRUE
+SALM_03,Salmon Creek Trail,ridgetop mineral soil,40.629183,-124.093833,495,2017,TRUE,TRUE
+SCT_01,Salmon Creek Trail,ridgetop mineral soil,40.628102,-124.092083,503,2016,TRUE,FALSE
+WOLF_01,Worm Trail (Left fork),hillslope mineral soil,40.628183,-124.070017,526,2017,TRUE,TRUE
+WOLF_02,Worm Trail (Left fork),hillslope mineral soil,40.62805,-124.07045,526,2017,TRUE,TRUE
+WOLF_03,Worm Trail (Left fork),ridgetop mineral soil,40.629033,-124.064217,537,2017,TRUE,TRUE
+WOLF_04,Worm Trail (Left fork),ridgetop mineral soil,40.628767,-124.0644,536,2017,TRUE,TRUE
+WOMT_01,Worm Trail (Right fork),ridgetop mineral soil,40.632758,-124.0656,538,2016,TRUE,FALSE
+WOMT_02,Worm Trail (Right fork),ridgetop mineral soil,40.632758,-124.0656,538,2016,TRUE,FALSE
+WORF_01,Worm Trail (Right fork),hillslope mineral soil,40.633767,-124.061633,575,2017,FALSE,TRUE
+WORF_02,Worm Trail (Right fork),hillslope mineral soil,40.6339,-124.061867,575,2017,TRUE,TRUE
+WORF_03,Worm Trail (Right fork),ridgetop mineral soil,40.630967,-124.059783,596,2017,TRUE,TRUE
+WORF_04,Worm Trail (Right fork),ridgetop mineral soil,40.63045,-124.05995,593,2017,FALSE,TRUE
+WORF_05,Worm Trail (Right fork),ridgetop mineral soil,40.623017,-124.059433,444,2017,TRUE,TRUE
+WORM_01,Worm Trail,ridgetop mineral soil,40.62871,-124.06454,534,2016,TRUE,FALSE
+WORM_02,Worm Trail,ridgetop mineral soil,40.62893,-124.06435,537,2016,FALSE,FALSE
+WORM_03,Worm Trail,alluvial fan,40.62296,-124.06887,402,2016,TRUE,FALSE

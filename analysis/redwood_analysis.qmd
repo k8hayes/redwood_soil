@@ -4,16 +4,7 @@ format: html
 editor: visual
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-```{r}
-#| label: set-up
-
-
-
-```
+Runs the whole analysis from the raw data in `data/raw/`. Each chunk sources one script in `code/`. Run the chunks in order from a fresh session.
 
 ```{r}
 #| label: load-lib
@@ -21,22 +12,66 @@ Quarto enables you to weave together content and executable code into a finished
 source(here::here("code", "00_load-lib.R"))
 ```
 
-```{r}
-#| label: process-costech
+# Radiocarbon dates
 
-source(here::here("code", "01_process-costech.R"))
+```{r}
+#| label: calibrate-dates
+
+source(here::here("code", "01_calibrate-dates.R"))
+```
+
+```{r}
+#| label: charcoal-stratigraphy
+
+source(here::here("code", "02_charcoal-stratigraphy.R"))
+```
+
+```{r}
+#| label: summed-probability
+
+source(here::here("code", "03_summed-probability.R"))
+```
+
+# Soil carbon
+
+```{r}
+#| label: carbon-stocks
+
+source(here::here("code", "04_carbon-stocks.R"))
 ```
 
 # Figures
 
-```{r}
-#| label: Fig-2. Carbon ratio
+Figure 4 (summed probability) is written by `03_summed-probability.R`. Figure 1 (map) is not part of this run yet; see `code/fig1_map.R`.
 
-source(here::here("code", "Fig2_carbonratio.R"))
+```{r}
+#| label: fig-2-carbon-by-depth
+
+source(here::here("code", "fig2_carbon_by_depth.R"))
 ```
 
 ```{r}
-#| label: Fig-S1. Bulk density
+#| label: fig-3-age-depth
 
-source(here::here("code", "FigS1_bulkdensity.R"))
+source(here::here("code", "fig3_age_depth.R"))
+```
+
+```{r}
+#| label: fig-s1-bulk-density
+
+source(here::here("code", "figS1_bulk_density.R"))
+```
+
+```{r}
+#| label: fig-s2-method-comparison
+
+source(here::here("code", "figS2_method_comparison.R"))
+```
+
+# Session information
+
+```{r}
+#| label: session-info
+
+sessionInfo()
 ```

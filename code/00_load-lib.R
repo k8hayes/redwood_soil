@@ -8,6 +8,6 @@
 
 # Load libraries
 librarian::shelf(tidyverse, cowplot, terra,
-                 tidyterra, here, rcarbon) #, update_all= TRUE)
+                 tidyterra, here, rcarbon, sf, maps) #, update_all= TRUE)
 
 theme_set(theme_cowplot())

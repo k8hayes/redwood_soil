@@ -17,6 +17,9 @@ Inputs to the analysis. Code never writes here.
 | `lab_workbook_august_2017_subsamples.xlsx` | Earlier laboratory records. Source of `subsample_dry_mass_g`. |
 | `sieved_charcoal_mass.csv` | Mass of charcoal sieved from the second core at each site, by size class. Its dry-weight and concentration columns are superseded by `core_dry_mass.csv` and the code. |
 | `sites.csv` | One row per site: location, site type, coordinates, elevation, year sampled, and whether it was dated and cored. |
+| `gis/redwood_range_little.geojson` | Natural range of coast redwood (*Sequoia sempervirens*) from Little's "Atlas of United States Trees", digitized by the USGS (NAD27). Copied from https://github.com/wpetry/USTreeAtlas. |
+| `gis/headwaters_forest_reserve.geojson` | Reserve boundary from the BLM layer "NLCS National Monuments, National Conservation Areas and Similar Designations". Downloaded by `code/fig1_map.R` the first time it runs. |
+| `gis/dem_1m/` | USGS 3DEP 1 m elevation tiles covering the reserve. Not kept in git (large). Download from the National Map downloader (https://apps.nationalmap.gov/downloader/): choose Elevation Products (3DEP), 1 meter DEM, draw a box around the reserve, and save the GeoTIFFs here. Only needed to rebuild `data/processed/hillshade_reserve.tif`. |
 | `fire_scar_events.csv`, `fire_history_literature.xlsx` | Published and unpublished fire-scar records for comparison. |
 
 ## processed/

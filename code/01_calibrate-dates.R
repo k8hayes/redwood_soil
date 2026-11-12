@@ -9,6 +9,10 @@
 #   output/tables/table1_radiocarbon_dates.csv Table 1 of the manuscript
 #   output/tables/calibration_old_vs_new.csv   new values next to the
 #                                              earlier CALIB output
+#   output/tables/excluded_dates.csv           calibrated values for dates
+#                                              not used in the analysis
+#   output/tables/radiocarbon_summary.csv      counts and ages quoted in
+#                                              the text
 #
 # Requires the rcarbon and here packages (called with pkg:: below).
 
@@ -137,3 +141,61 @@ message("Dates with no earlier CALIB value: ",
         sum(is.na(comparison$old_cal_median)))
 message("Dates where a bound or the median moved more than ",
         flag_shift_years, " years: ", sum(comparison$flag, na.rm = TRUE))
+
+# Dates not used in the analysis ###############################
+# Calibrated so the text can report them (the Headwaters Pond basal date).
+if (nrow(dates_excluded) > 0) {
+  excluded_calibrated <- rcarbon::calibrate(x = dates_excluded$c14_age,
+                                            errors = dates_excluded$c14_error,
+                                            ids = dates_excluded$cams_id,
+                                            calCurves = calibration_curve,
+                                            normalised = TRUE,
+                                            verbose = FALSE)
+  excluded_ranges <- rcarbon::hpdi(excluded_calibrated, credMass = credible_mass)
+
+  dates_excluded$cal_bp_youngest <- sapply(excluded_ranges,
+                                           function(r) min(r[, "endCalBP"]))
+  dates_excluded$cal_bp_oldest   <- sapply(excluded_ranges,
+                                           function(r) max(r[, "startCalBP"]))
+  dates_excluded$cal_bp_median   <- rcarbon::medCal(excluded_calibrated)
+}
+
+write.csv(dates_excluded, here::here("output/tables/excluded_dates.csv"),
+          row.names = FALSE)
+
+# Numbers quoted in the text ###############################
+# Modern dates stay in Table 1 but are not counted here: no fire is known
+# at those sites after 1950, so they are not interpreted as fires.
+mass_movement_types <- c("colluvial hollow", "alluvial fan")
+is_mass_movement <- dates_calibrated$site_type %in% mass_movement_types
+mineral <- dates_calibrated[!is_mass_movement & !dates_calibrated$is_modern, ]
+mass_movement <- dates_calibrated[is_mass_movement, ]
+
+radiocarbon_summary <- data.frame(
+  quantity = c("dates in Table 1",
+               "mineral-soil dates in Table 1",
+               "modern mineral-soil dates (not counted below)",
+               "calibrated mineral-soil dates",
+               "calibrated mineral-soil dates with median <= 1000 cal BP",
+               "oldest mineral-soil median (cal BP)",
+               "oldest mineral-soil 2-sigma bound (cal BP)",
+               "mass-movement dates",
+               "youngest mass-movement median (cal BP)",
+               "oldest mass-movement median (cal BP)"),
+  value = c(nrow(dates_calibrated),
+            sum(!is_mass_movement),
+            sum(!is_mass_movement & dates_calibrated$is_modern),
+            nrow(mineral),
+            sum(mineral$cal_bp_median <= 1000),
+            max(mineral$cal_bp_median),
+            max(mineral$cal_bp_oldest),
+            nrow(mass_movement),
+            min(mass_movement$cal_bp_median),
+            max(mass_movement$cal_bp_median))
+)
+
+write.csv(radiocarbon_summary,
+          here::here("output/tables/radiocarbon_summary.csv"),
+          row.names = FALSE)
+
+print(radiocarbon_summary)

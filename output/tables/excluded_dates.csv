@@ -1,0 +1,2 @@
+"cams_id","site_id","site_type","depth_cm","c14_age","c14_error","f14c","f14c_error","use_in_analysis","exclusion_reason","source","note","cal_bp_youngest","cal_bp_oldest","cal_bp_median"
+177464,"HEAD_04","pond sediment",83,1505,30,NA,NA,FALSE,"Base of a Headwaters Pond sediment core (HEAD IV, drive A, August 2016), not soil charcoal. Reported in the text only.","data/c14inp.csv (no CAMS report in repository)","Dated material was charcoal or wood (not recorded which). 83 cm was the base of the sediment.",1309,1507,1375

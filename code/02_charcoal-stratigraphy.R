@@ -1,23 +1,27 @@
 ## --------------------------------------------------------------- ##
 ## Redwood Charcoal Analysis
 ##
-## 02 - Charcoal stratigraphy (age-depth pairs)
+## 02 - Charcoal stratigraphy (age-depth pairs in mineral soil)
 ## --------------------------------------------------------------- ##
-# Builds every pair of dates from adjacent depths within a site and
+# Pairs dates from adjacent depths within each mineral-soil site and
 # classifies each pair from the calibrated 2-sigma ranges:
 #   in order          deeper date is older and the ranges do not overlap
 #   reversed          deeper date is younger and the ranges do not overlap
 #   indistinguishable the ranges overlap
-# Dates from the same depth are never paired with each other. Where a
-# depth has two dates, each is paired with every date at the next depth.
-# The age difference uses calibrated medians; a modern date has no median,
-# so the midpoint of its post-1950 bounds is used instead.
+#
+# Left out of the comparison:
+#   - the colluvial hollow and alluvial fan, which are transported
+#     deposits and are described as profiles in the text
+#   - the two modern (post-1950) dates, which cannot be tied to a fire
 #
 # Run after 01_calibrate-dates.R. Writes:
 #   data/processed/stratigraphy_pairs.csv     one row per pair
-#   output/tables/stratigraphy_summary.csv    counts by site type and class
+#   output/tables/stratigraphy_summary.csv    number of pairs in each class
 #   output/tables/stratigraphy_old_vs_new.csv pairs whose class differs
 #                                             under the earlier calibration
+
+# Parameters ###############################
+mass_movement_types <- c("colluvial hollow", "alluvial fan")
 
 # Functions ###############################
 
@@ -56,8 +60,6 @@ build_pairs <- function(dates, youngest_column, oldest_column, median_column) {
   dates$youngest <- dates[[youngest_column]]
   dates$oldest   <- dates[[oldest_column]]
   dates$median   <- dates[[median_column]]
-  no_median <- is.na(dates$median)
-  dates$median[no_median] <- (dates$youngest[no_median] + dates$oldest[no_median]) / 2
 
   by_site <- split(dates, dates$site_id)
   pairs <- do.call(rbind, lapply(by_site, pairs_for_site))
@@ -72,44 +74,39 @@ build_pairs <- function(dates, youngest_column, oldest_column, median_column) {
   pairs
 }
 
-# Read ###############################
-dates <- read.csv(here::here("data/processed/dates_calibrated.csv"),
-                  stringsAsFactors = FALSE)
+# Read and filter ###############################
+dates_all <- read.csv(here::here("data/processed/dates_calibrated.csv"),
+                      stringsAsFactors = FALSE)
 
-mass_movement_types <- c("colluvial hollow", "alluvial fan")
-dates$setting <- ifelse(dates$site_type %in% mass_movement_types,
-                        "mass movement", "mineral soil")
+dates <- dates_all[!dates_all$site_type %in% mass_movement_types &
+                     !dates_all$is_modern, ]
+
+message("Dates in the comparison: ", nrow(dates), " (left out: ",
+        sum(dates_all$site_type %in% mass_movement_types),
+        " from mass-movement sites, ",
+        sum(dates_all$is_modern), " modern)")
 
 # Pairs from the new calibration ###############################
 pairs <- build_pairs(dates, "cal_bp_youngest", "cal_bp_oldest", "cal_bp_median")
-pairs$setting <- ifelse(pairs$site_type %in% mass_movement_types,
-                        "mass movement", "mineral soil")
 
 write.csv(pairs, here::here("data/processed/stratigraphy_pairs.csv"),
           row.names = FALSE)
 
-summary_table <- as.data.frame(table(setting = pairs$setting,
-                                     site_type = pairs$site_type,
-                                     class = pairs$class),
+summary_table <- as.data.frame(table(class = pairs$class),
                                responseName = "n_pairs")
-summary_table <- summary_table[summary_table$n_pairs > 0, ]
 
 write.csv(summary_table,
           here::here("output/tables/stratigraphy_summary.csv"),
           row.names = FALSE)
 
-message("Pairs by setting and class:")
-print(table(pairs$setting, pairs$class))
+message("Mineral-soil pairs by class:")
+print(table(pairs$class))
 
 # Same classification under the earlier calibration ###############################
 old <- read.csv(here::here("output/tables/calibration_old_vs_new.csv"))
 dates_old <- merge(dates, old[, c("cams_id", "old_cal_youngest",
                                   "old_cal_oldest", "old_cal_median")],
-                   by = "cams_id", all.x = TRUE)
-
-# Modern dates keep their post-1950 bounds; they were never in CALIB.
-dates_old$old_cal_youngest[dates_old$is_modern] <- dates_old$cal_bp_youngest[dates_old$is_modern]
-dates_old$old_cal_oldest[dates_old$is_modern]   <- dates_old$cal_bp_oldest[dates_old$is_modern]
+                   by = "cams_id")
 
 pairs_old <- build_pairs(dates_old, "old_cal_youngest", "old_cal_oldest",
                          "old_cal_median")

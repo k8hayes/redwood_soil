@@ -47,9 +47,9 @@ age_plot <- ggplot(dates, aes(y = depth_cm, colour = site_type)) +
   background_grid() + panel_border() +
   theme(legend.position = "none")
 
-# B: age difference against depth difference for each pair ###############################
+# B: age difference against depth difference for each mineral-soil pair ###############################
 # Above zero the deeper charcoal is older; below zero it is younger.
-# Hollow points are pairs whose 2-sigma ranges overlap.
+# Faded points are pairs whose 2-sigma ranges overlap.
 pairs <- read.csv(here::here("data/processed/stratigraphy_pairs.csv"))
 
 pairs$distinguishable <- ifelse(pairs$class == "indistinguishable",

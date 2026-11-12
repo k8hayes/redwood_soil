@@ -1,0 +1,11 @@
+"quantity","value"
+"dates in Table 1",42
+"mineral-soil dates in Table 1",30
+"modern mineral-soil dates (not counted below)",2
+"calibrated mineral-soil dates",28
+"calibrated mineral-soil dates with median <= 1000 cal BP",21
+"oldest mineral-soil median (cal BP)",4192
+"oldest mineral-soil 2-sigma bound (cal BP)",4345
+"mass-movement dates",12
+"youngest mass-movement median (cal BP)",921
+"oldest mass-movement median (cal BP)",6837

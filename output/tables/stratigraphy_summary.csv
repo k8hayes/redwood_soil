@@ -1,10 +1,4 @@
-"setting","site_type","class","n_pairs"
-"mass movement","colluvial hollow","in order",4
-"mineral soil","ridgetop mineral soil","in order",4
-"mass movement","colluvial hollow","indistinguishable",6
-"mineral soil","ridgetop mineral soil","indistinguishable",1
-"mass movement","alluvial fan","reversed",1
-"mass movement","colluvial hollow","reversed",3
-"mineral soil","hillslope mineral soil","reversed",2
-"mineral soil","ridgetop mineral soil","reversed",4
-"mineral soil","valley mineral soil","reversed",1
+"class","n_pairs"
+"in order",3
+"indistinguishable",1
+"reversed",6

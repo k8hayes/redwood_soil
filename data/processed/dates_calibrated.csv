@@ -1,7 +1,7 @@
 "cams_id","site_id","site_type","depth_cm","c14_age","c14_error","f14c","f14c_error","use_in_analysis","exclusion_reason","source","note","is_modern","cal_bp_youngest","cal_bp_oldest","cal_bp_median","n_ranges"
 177578,"EELS_01","valley mineral soil",6,305,30,0.9625,0.0034,TRUE,"","CAMS report 2017-09-12","",FALSE,297,458,388,2
 177579,"EELS_01","valley mineral soil",13,75,30,0.9906,0.0035,TRUE,"","CAMS report 2017-09-12","",FALSE,31,258,117,2
-177460,"GOG_01","ridgetop mineral soil",1,NA,NA,NA,NA,TRUE,"","Table 1 of manuscript and c14 samples workbook (no CAMS report in repository)","Reported as >Modern. Earlier OxCal result recorded in the sample workbook: 1994-1998 CE.",TRUE,-66,0,NA,NA
+177460,"GOG_01","ridgetop mineral soil",1,NA,NA,NA,NA,TRUE,"","Table 1 of manuscript and c14 samples workbook (no CAMS report in repository)","Reported as >Modern. Earlier OxCal result recorded in the sample workbook: 1994-1998 CE. No fire is known at this site after 1950, so the date is not interpreted as a fire; kept in Table 1 only.",TRUE,-66,0,NA,NA
 177461,"GOG_01","ridgetop mineral soil",18,445,30,NA,NA,TRUE,"","data/c14inp.csv (no CAMS report in repository)","",FALSE,344,531,504,2
 177462,"GOG_02","ridgetop mineral soil",4,90,30,NA,NA,TRUE,"","data/c14inp.csv (no CAMS report in repository)","",FALSE,25,262,114,2
 177463,"GOG_02","ridgetop mineral soil",16,155,35,NA,NA,TRUE,"","data/c14inp.csv (no CAMS report in repository)","",FALSE,0,285,149,6
@@ -25,7 +25,7 @@
 177082,"SCT_01","ridgetop mineral soil",16,680,30,0.9186,0.0033,TRUE,"","CAMS report 2017-06-19","",FALSE,561,673,647,2
 177083,"SCT_01","ridgetop mineral soil",20,1255,30,0.8551,0.0031,TRUE,"","CAMS report 2017-06-19","",FALSE,1075,1279,1214,3
 177586,"WOLF_01","hillslope mineral soil",5,580,30,0.9304,0.003,TRUE,"","CAMS report 2017-09-12","",FALSE,531,645,602,2
-177587,"WOLF_01","hillslope mineral soil",16,NA,NA,1.0316,0.0037,TRUE,"","CAMS report 2017-09-12","Reported as >modern.",TRUE,-66,0,NA,NA
+177587,"WOLF_01","hillslope mineral soil",16,NA,NA,1.0316,0.0037,TRUE,"","CAMS report 2017-09-12","Reported as >modern. No fire is known at this site after 1950, so the date is not interpreted as a fire; kept in Table 1 only.",TRUE,-66,0,NA,NA
 177588,"WOLF_02","hillslope mineral soil",3,1420,35,0.8379,0.0032,TRUE,"","CAMS report 2017-09-12","",FALSE,1288,1368,1325,1
 177589,"WOLF_03","ridgetop mineral soil",10,3615,30,0.6376,0.0023,TRUE,"","CAMS report 2017-09-12","",FALSE,3838,4067,3923,2
 177590,"WOLF_03","ridgetop mineral soil",45,265,30,0.9674,0.0034,TRUE,"","CAMS report 2017-09-12","",FALSE,0,439,310,4

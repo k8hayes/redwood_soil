@@ -1,7 +1,7 @@
 cams_id,site_id,site_type,depth_cm,c14_age,c14_error,f14c,f14c_error,use_in_analysis,exclusion_reason,source,note
 177578,EELS_01,valley mineral soil,6,305,30,0.9625,0.0034,TRUE,,CAMS report 2017-09-12,
 177579,EELS_01,valley mineral soil,13,75,30,0.9906,0.0035,TRUE,,CAMS report 2017-09-12,
-177460,GOG_01,ridgetop mineral soil,1,,,,,TRUE,,Table 1 of manuscript and c14 samples workbook (no CAMS report in repository),Reported as >Modern. Earlier OxCal result recorded in the sample workbook: 1994-1998 CE.
+177460,GOG_01,ridgetop mineral soil,1,,,,,TRUE,,Table 1 of manuscript and c14 samples workbook (no CAMS report in repository),"Reported as >Modern. Earlier OxCal result recorded in the sample workbook: 1994-1998 CE. No fire is known at this site after 1950, so the date is not interpreted as a fire; kept in Table 1 only."
 177461,GOG_01,ridgetop mineral soil,18,445,30,,,TRUE,,data/c14inp.csv (no CAMS report in repository),
 177462,GOG_02,ridgetop mineral soil,4,90,30,,,TRUE,,data/c14inp.csv (no CAMS report in repository),
 177463,GOG_02,ridgetop mineral soil,16,155,35,,,TRUE,,data/c14inp.csv (no CAMS report in repository),
@@ -15,7 +15,7 @@ cams_id,site_id,site_type,depth_cm,c14_age,c14_error,f14c,f14c_error,use_in_anal
 177081,GOV_01,colluvial hollow,52,4355,35,0.5814,0.0025,TRUE,,CAMS report 2017-06-19,
 177585,GOV_01,colluvial hollow,52,4105,30,0.5997,0.002,TRUE,,CAMS report 2017-09-12,
 175999,GOV_01,colluvial hollow,67,2615,40,0.7221,0.0032,TRUE,,CAMS report 2016-11-08,
-177464,HEAD_04,,83,1505,30,,,FALSE,Not in the manuscript or dates.csv; decision pending.,data/c14inp.csv (no CAMS report in repository),
+177464,HEAD_04,pond sediment,83,1505,30,,,FALSE,"Base of a Headwaters Pond sediment core (HEAD IV, drive A, August 2016), not soil charcoal. Reported in the text only.",data/c14inp.csv (no CAMS report in repository),Dated material was charcoal or wood (not recorded which). 83 cm was the base of the sediment.
 177577,RIDG_01,ridgetop mineral soil,19,830,30,0.9019,0.0032,TRUE,,CAMS report 2017-09-12,
 177465,RIDG_02,ridgetop mineral soil,2,875,30,,,TRUE,,data/c14inp.csv (no CAMS report in repository),
 177457,RIDG_02,ridgetop mineral soil,11,2245,35,,,TRUE,,data/c14inp.csv (no CAMS report in repository),
@@ -26,7 +26,7 @@ cams_id,site_id,site_type,depth_cm,c14_age,c14_error,f14c,f14c_error,use_in_anal
 177082,SCT_01,ridgetop mineral soil,16,680,30,0.9186,0.0033,TRUE,,CAMS report 2017-06-19,
 177083,SCT_01,ridgetop mineral soil,20,1255,30,0.8551,0.0031,TRUE,,CAMS report 2017-06-19,
 177586,WOLF_01,hillslope mineral soil,5,580,30,0.9304,0.003,TRUE,,CAMS report 2017-09-12,
-177587,WOLF_01,hillslope mineral soil,16,,,1.0316,0.0037,TRUE,,CAMS report 2017-09-12,Reported as >modern.
+177587,WOLF_01,hillslope mineral soil,16,,,1.0316,0.0037,TRUE,,CAMS report 2017-09-12,"Reported as >modern. No fire is known at this site after 1950, so the date is not interpreted as a fire; kept in Table 1 only."
 177588,WOLF_02,hillslope mineral soil,3,1420,35,0.8379,0.0032,TRUE,,CAMS report 2017-09-12,
 177589,WOLF_03,ridgetop mineral soil,10,3615,30,0.6376,0.0023,TRUE,,CAMS report 2017-09-12,
 177590,WOLF_03,ridgetop mineral soil,45,265,30,0.9674,0.0034,TRUE,,CAMS report 2017-09-12,

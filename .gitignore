@@ -3,3 +3,5 @@
 .RData
 .Ruserdata
 .positai
+# Large elevation tiles for Figure 1 (see data/README.md)
+data/raw/gis/dem_1m/
